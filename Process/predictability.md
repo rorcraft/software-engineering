@@ -19,3 +19,12 @@ Treat avg lead time as fixed variable, from past data.
 * Velocity = WIP / Lead Time
 
 i.e. # of engineers required = Velocity * Lead Time
+
+### Allocate capacity
+
+* Identify Classes of Service, allocate in order to deliver against anticipated demand.
+
+e.g. 
+* Expedite
+* Standing Feature
+* Fixed Date
