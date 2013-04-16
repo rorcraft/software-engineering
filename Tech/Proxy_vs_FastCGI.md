@@ -13,3 +13,6 @@ However, it has the following downsides:
 * the backend server does not generally know the orignal "Host:" HTTP header, and therefore, cannot automatically generated an absolute URL to a local resource; Zope addresses this with special URLs to embed the original protocol, host and port in the request to the backend, but it's something you don't have to do with FastCGI/Plack/...;
 
 * the frontend cannot automatically spawn backend processes, like it could do with FastCGI for instance.
+
+## FastCGI - the forgotten treasure
+http://www.nongnu.org/fastcgi/#AEN147
