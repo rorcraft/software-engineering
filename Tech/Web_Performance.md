@@ -1,3 +1,5 @@
+http://www.igvita.com/2013/01/15/faster-websites-crash-course-on-web-performance/
+
 # Web Performance:
 ```
  ___________
