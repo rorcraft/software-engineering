@@ -29,3 +29,8 @@ __[Segal's law](http://en.wikipedia.org/wiki/Segal's_law)__
 __[Conway's law](http://en.wikipedia.org/wiki/Conway%27s_Law)__
 
 * ...organizations which design systems ... are constrained to produce designs which are copies of the communication structures of these organizations.
+
+__[Murphys Law](http://en.wikipedia.org/wiki/Murphy%27s_law)__
+
+* Whatever can go wrong, will go wrong
+
