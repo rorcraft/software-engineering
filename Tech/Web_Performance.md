@@ -13,6 +13,18 @@ http://www.igvita.com/2013/01/15/faster-websites-crash-course-on-web-performance
 |___________|
 ```
 
+## Request lifecycle
+
+http://blog.catchpoint.com/2010/09/17/anatomyhttp/
+
+* DNS lookup
+* tcp handshake
+* first packet
+* stream HTML
+* browser parse html
+* more HTTP requests
+* TBD...
+
 # Browser
 
 * Parse HTML, Javascript, CSS
