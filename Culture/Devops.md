@@ -15,3 +15,32 @@ http://itrevolution.com/books/phoenix-project-devops-book/
 "Title: Why We Need DevOps Now: A Fourteen Year Study Of High Performing IT Organizations"
 http://www.youtube.com/watch?v=disjFj4ruHg
 Presented by: Gene Kim
+
+__Instrumentation & Metrics__
+
+https://vimeo.com/52711264
+
+> "Instrumentation is Unit-testing for Ops"
+
+* detect regressions
+* validate new hypotheses
+* increases tolerance to change
+
+__Collection -> Aggregation -> Storage -> Analysis__
+
+Devs require:
+* instrumentation == collection
+* concise primitives
+* minimal dependencies
+* fire and forget
+* minimal performance impact
+
+Ops require:
+* flexibility at all other layer
+* simple introspection
+* simple capture
+
+Ideal instrumentation:
+* implements primitives
+* captures state
+* provides access
