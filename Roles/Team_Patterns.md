@@ -1,6 +1,20 @@
-http://www.dfpug.de/loseblattsammlung/online/workshop/design_patterns/sonstiges.htm
+Project model is fundamentally flawed - Projects deliver exactly what they promise. Project teams have little incentive to invest in the long term operation and maintenance of the systems that they create.
+http://evan.bottch.com/2010/08/29/projects-are-evil-and-must-be-destroyed/
+
+"Facebook’s Engineering" - Product managers want teams to “own their code,” to put more intention and responsibility behind any changes they make.
+“This is about understanding that there is some level of permanence in the code you ship,” product manager Michael Sharon told me. “This is educating our people about quality.”
+http://allthingsd.com/20121109/own-your-code-facebooks-engineering-shift-tackles-the-problem-of-mobile/
+
+http://www.svproduct.com/dedicated-product-teams/
+
+In this model, the executives, rather than debating specific projects, instead consider which areas of the business they want to invest in, and what percentage of resources to allocate to each area.  For example, for a typical e-commerce company, they might have teams like “Search and Recommendations,” “Product Pages and SEO,” “Fulfillment Systems,” “Infrastructure,” “Rapid Response” and “New Business Opportunities.”  They would then choose what level of investment they consider appropriate for each area.
+
+The next step for the management team in this model is to define Product Team Scorecards for each of the teams.  This essentially sets the business priorities for each of the teams.
+
 
 ## The Surgical Team.
+
+http://www.dfpug.de/loseblattsammlung/online/workshop/design_patterns/sonstiges.htm
 
 The __surgeon__ is the chief programmer and the el-presidente of the whole team. He produces all the specifications, codes the entire system the team is responsible for, tests it, and drafts its supporting documentation.
 
