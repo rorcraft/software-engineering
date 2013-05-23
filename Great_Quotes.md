@@ -8,3 +8,5 @@ http://www.fastcompany.com/1836987/listen-steve-jobs-payoff-great-employee
 > **It's not fully shipped until it's fast** - github
 
 > **Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.** ― Albert Einstein
+
+> **Every time you present the user with a non-essential decision to make, you have failed as a designer.** - Apple Design
