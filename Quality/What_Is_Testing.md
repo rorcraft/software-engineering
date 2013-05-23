@@ -19,6 +19,8 @@ https://www.udacity.com/wiki/cs258/unit_1
 * A run-time check that tests a condition which, when false, reveals a bug in the software.
 * A mechanism by which the program is halted (maybe after really minimal clean-up work).
 * Skip assertions for mission critical programs when continuing with error is better than halting.
+* http://docs.oracle.com/javase/1.4.2/docs/guide/lang/assert.html
+* http://c2.com/cgi/wiki?ShipWithAssertionsOn
 
 ### Domains and Range
 
