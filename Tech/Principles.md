@@ -22,8 +22,34 @@ Dependency injection is one method of following this principle.
 
 **Tell, don't ask.**
 
+This is what we are trying to prevent.
+```
+SortedList thingy = someObject.getEmployeeList();
+thingy.addElementWithKey(foo.getKey(), foo);
+```
+We also have an example of Asking instead of Telling in foo.getKey()). 
+Direct access of a child like this extends coupling from the caller farther than it needs to be. The caller is depending on these facts:
+
+* someObject holds employees in a SortedList.
+* SortedList’s add method is addElementWithKey()
+* foo’s method to query its key is getKey()
+
+Instead, this should be:
+```
+someObject.addToThingy(foo);
+```
+
 **Law of Demeter**
-Code components should only communicate with their direct relations (e.g. classes that they inherit from, objects that they contain, objects passed by argument, etc.) http://en.wikipedia.org/wiki/Law_of_Demeter
+
+http://en.wikipedia.org/wiki/Law_of_Demeter
+
+Any method of an object should only call methods belonging to:
+
+* itself.
+* any parameters that were passed in to the method.
+* any objects it created.
+* any composite objects.
+* NOT methods belonging to objects that were returned from some other call
 
 ### Logic Organization:
 
