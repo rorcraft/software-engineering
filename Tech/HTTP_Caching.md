@@ -93,7 +93,7 @@ Last-Modified: Wed, 01 Sep 2004 13:24:52 GMT
 (data)
 ```
 
-Caveats with only using Last-Modified.
+Caveat - sub-second updates may never be realized.
 
 __ETag -> If-None-Match__
 * Clients stores the ETag
@@ -114,7 +114,8 @@ ETag: "abcdef-3e3073913b100"
 (data)
 ```
 
-
+Caveat:
+* gzip file format has a timestamp in it that means the ETag will change every time you re-compress it.
 
 ## Example 
 
@@ -163,3 +164,4 @@ Reference:
 * https://www.varnish-software.com/static/book/HTTP.html
 * http://en.wikipedia.org/wiki/List_of_HTTP_header_fields
 * http://palizine.plynt.com/issues/2008Jul/cache-control-attributes/
+* http://www.mnot.net/blog/2007/08/07/etags
