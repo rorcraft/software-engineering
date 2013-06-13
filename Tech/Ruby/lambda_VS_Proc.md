@@ -1,3 +1,5 @@
+## lambda vs Proc.new
+
 http://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Method_Calls
 
 > ```return``` inside a block or Proc[1] will return from the method, in which the block or Proc is defined, not from the block itself
