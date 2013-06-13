@@ -1,10 +1,14 @@
+Object - { Behavior { State } } 
+Abstraction, Encapsulation, Dependencies.
+Decoupling and Coherence.
+
 http://www.amazon.com/dp/0321721330
 
 * Depend on behaviour, not data
 * Single Responsibility, isolate extra responsibility, and dependencies.
 * Control the dependency direction. Depend on things that change less often than you do.
 * Dependency injection.
-* Ask, don't tell.
+* Tell, don't ask.
 * Hook methods allow subclass to contribute specializations.
 * honor the contract - don't change the subclass interfaces - Liskov Substitution Principle.
 * template method pattern
