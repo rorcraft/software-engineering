@@ -1,6 +1,8 @@
 Object - { Behavior { State } } 
-Abstraction, Encapsulation, Dependencies.
-Decoupling and Coherence.
+* Abstraction - concept of describing something in simpler terms.
+* Encapsulation - hide the values or state of a structured data object inside a class
+* Dependencies.
+* Decoupling and Coherence.
 
 http://www.amazon.com/dp/0321721330
 
