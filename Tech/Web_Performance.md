@@ -27,6 +27,8 @@ http://blog.catchpoint.com/2010/09/17/anatomyhttp/
 
 # Browser
 
+[Blink’s Rendering Pipeline](https://docs.google.com/a/change.org/document/d/1wYNK2q_8vQuhVSWyUHZMVPGELzI0CYJ07gTPWP1V1us/pub)
+
 * Parse HTML, Javascript, CSS
 * Render incrementally.
 
