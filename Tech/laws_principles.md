@@ -1,6 +1,7 @@
 __[Robustness principle or Postel's law](http://en.wikipedia.org/wiki/Robustness_principle)__
 
 * Be conservative in what you do, be liberal in what you accept from others
+* Be conservative in what you send, be liberal in what you accept
 
 __[Broken Windows theory](http://en.wikipedia.org/wiki/Broken_windows_theory)__
 
