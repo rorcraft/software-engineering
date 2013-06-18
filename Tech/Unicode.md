@@ -48,3 +48,15 @@ $	U+0024	0100100	00100100	24
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 ```
 But that meta tag really has to be the very first thing in the <head> section because as soon as the web browser sees this tag it's going to stop parsing the page and start over after reinterpreting the whole page using the encoding you specified.
+
+## Lessons ##
+
+http://labs.spotify.com/2013/06/18/creative-usernames/
+
+**When Ω is not the same as Ω**, distinguish between _verbatim usernames_ and _canonical usernames_
+> Omega and Ohm characters are different when used in verbatim usernames they are mapped to the same character in canonical usernames.
+
+> ```verbatim -> canonical``` should be _idempotent_
+
+
+
