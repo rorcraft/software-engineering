@@ -1,3 +1,5 @@
+# Programmer Competency Matrix
+
 http://sijinjoseph.com/programmer-competency-matrix/
 
 <div class="post-bodycopy clearfix"><blockquote><p>Note that the knowledge for each level is cumulative; being at<br />
@@ -352,16 +354,4 @@ levels lower than <em>n</em>.</p></blockquote>
 </table>
 <blockquote><p>Thanks to <a href="http://fullof.bs/">John Haugeland</a> for a<br />
 reformatting of it that works much more nicely on the web.</p></blockquote>
-<style type="text/css"><!--      table                              { border-collapse: collapse; }
-      td                                 { border: solid #888; border-width: 0 1px 0 0; font-family: candara, sans-serif; font-weight: bold; background-color: white; padding: 0.25em 0.5em; }
-      td+td                              { border-width: 1px; font-weight: normal; background-color: #ddd; }
-      td+td+td+td+td+td                  { border-width: 0 0 0 1px; font-size: 75%; color: #79b; background-color: white; }
-      th                                 { font-family: candara, sans-serif; text-align: justify; padding-top: 2em; font-size: 200%; }
-      .headers td+td                     { background-color: #bbb; padding: 0.3em 0.5em; }
-      .headers td+td+td+td+td+td         { background-color: #eee; font-size: 100%; color: black; }
-      .explain                           { color: #68a; }</p>
-<p>table tr.q:hover td                { background-color: #ff9; }
-      table tr.q:hover td+td             { background-color: #ffd; }
-      table tr.q:hover td+td+td+td+td+td { background-color: white; }</p>
-<p>--></style>
 </div>  							
