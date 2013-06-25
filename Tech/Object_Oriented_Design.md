@@ -1,3 +1,5 @@
+http://codebetter.com/raymondlewallen/2005/07/19/4-major-principles-of-object-oriented-programming/
+
 Object - { Behavior { State } } 
 * Abstraction - concept of describing something in simpler terms.
 * Encapsulation - hide the values or state of a structured data object inside a class
