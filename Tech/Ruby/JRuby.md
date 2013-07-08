@@ -8,16 +8,6 @@ JRUBY_OPTS=-Xcompile.invokedynamic=true
 
 ```
 
-### Nailgun
-https://github.com/jruby/jruby/wiki/JRubyWithNailgun
-
-```
-cd ~/.rvm/rubies/jruby-1.7.4/
-cd tool/nailgun; configure; make
-ruby --ng-server &
-ruby --ng bundle exec rspec
-```
-
 ### ruby-debug
 https://kenai.com/projects/jruby/pages/UsingTheJRubyDebugger
 ```
@@ -27,3 +17,7 @@ debugger
 => ruby --debug bundle exec rspec
 * make sure to pass --debug flag, or "next" will always act as if it were the "step" command.
 ```
+
+### Speed up startup time
+
+* Drip - https://github.com/flatland/drip/wiki/JRuby
