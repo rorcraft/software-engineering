@@ -58,7 +58,14 @@ http://labs.spotify.com/2013/06/18/creative-usernames/
 
 > ```verbatim -> canonical``` should be _idempotent_
 
+**Ruby/Rails**
 http://yehudakatz.com/2010/05/05/ruby-1-9-encodings-a-primer-and-the-solution-for-rails/
 
+**Mixed Encoding**
 http://stackoverflow.com/questions/10009753/python-dealing-with-mixed-encoding-files
 
+**Runes**
+http://www.personal.psu.edu/ejp10/blogs/gotunicode/charts/runes.html
+
+**Unicode blog**
+http://www.personal.psu.edu/ejp10/blogs/gotunicode/
