@@ -60,7 +60,7 @@ http://labs.spotify.com/2013/06/18/creative-usernames/
 
 **Ruby/Rails**
 http://yehudakatz.com/2010/05/05/ruby-1-9-encodings-a-primer-and-the-solution-for-rails/
-http://blog.grayproductions.net/articles/understanding_m17n
+http://web.archive.org/web/20120308055357/http://blog.grayproductions.net/articles/understanding_m17n
 http://yokolet.blogspot.com/2009/07/design-and-implementation-of-ruby-m17n.html
 
 **Javascript**
