@@ -8,8 +8,14 @@ Monitor GC:
 -Xmx500m -Xss1024k -Djruby.memory.max=500m -Djruby.stack.max=1024k
 –server -J-XX:+UseParallelGC –fast
 
-PyPy
-http://morepypy.blogspot.com/2013/10/incremental-garbage-collector-in-pypy.html
+__PyPy__:
 
-Rubinius
+http://morepypy.blogspot.com/2013/10/incremental-garbage-collector-in-pypy.html
+http://doc.pypy.org/en/latest/garbage_collection.html#minimark-gc
+
+PyPy essentially has only the cycle finder - it does not bother with reference counting, instead it walks alive objects every now and then
+
+Incremental GC spreads the walking of objects and cleaning them across the execution time in smaller intervals, hence smaller pauses.
+
+__Rubinius__:
 http://rubini.us/2013/06/22/concurrent-garbage-collection/
