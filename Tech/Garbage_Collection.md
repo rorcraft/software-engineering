@@ -7,3 +7,9 @@ Monitor GC:
 
 -Xmx500m -Xss1024k -Djruby.memory.max=500m -Djruby.stack.max=1024k
 –server -J-XX:+UseParallelGC –fast
+
+PyPy
+http://morepypy.blogspot.com/2013/10/incremental-garbage-collector-in-pypy.html
+
+Rubinius
+http://rubini.us/2013/06/22/concurrent-garbage-collection/
