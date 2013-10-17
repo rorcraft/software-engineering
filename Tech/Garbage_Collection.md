@@ -1,4 +1,20 @@
-JVM GC:
+__To Know A Garbage Collector__
+http://michaelrbernste.in/2013/06/10/to-know-a-garbage-collector-goruco-2013.html
+
+* Heap
+* Mutator - allocates memory from heap
+* Collector - reclaims memory return to heap
+* Roots - references directly accessible to mutator
+* Barriers - mutates object on a heap
+
+* Mark & Sweep - collect cyclic references but can have long pauses
+* Reference Counting - incremental but cannot easily collect cyclic refs.
+* Unified Theory - hybrid.
+
+__Rare are GC Talks__
+http://furious-waterfall-55.heroku.com/ruby-guide/internals/gc.html
+
+__JVM GC__:
 http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html
 
 Monitor GC:
