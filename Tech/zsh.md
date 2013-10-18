@@ -25,3 +25,20 @@ lyric >
 `dirs -v`
 Direct access to paths: `~1`, `~2` ...
 `popd`, `pushd`, or reset `dirs ~/work/proj1 ~/work/proj2 ~/work/proj3`
+-----
+__brace expansion__
+```
+> touch logfile.9908{01..31}.tmp
+> ls logfile*
+logfile.990301.tmp  logfile.990309.tmp  logfile.990317.tmp ogfile.990325.tmp
+logfile.990302.tmp  logfile.990310.tmp  logfile.990318.tmp ogfile.990326.tmp
+logfile.990303.tmp  logfile.990311.tmp  logfile.990319.tmp ogfile.990327.tmp
+logfile.990304.tmp  logfile.990312.tmp  logfile.990320.tmp ogfile.990328.tmp
+logfile.990305.tmp  logfile.990313.tmp  logfile.990321.tmp ogfile.990329.tmp
+logfile.990306.tmp  logfile.990314.tmp  logfile.990322.tmp ogfile.990330.tmp
+logfile.990307.tmp  logfile.990315.tmp  logfile.990323.tmp ogfile.990331.tmp
+logfile.990308.tmp  logfile.990316.tmp  logfile.990324.tmp
+```
+---
+
+
