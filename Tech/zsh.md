@@ -21,3 +21,7 @@ lyric > cd 2.2 2.0.46
 /usr/local/encap/fvwm-2.0.46/libexec/fvwm/2.0.46
 lyric > 
 ```
+-----
+`dirs -v`
+Direct access to paths: `~1`, `~2` ...
+`popd`, `pushd`, or reset `dirs ~/work/proj1 ~/work/proj2 ~/work/proj3`
