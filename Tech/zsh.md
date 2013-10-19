@@ -25,6 +25,7 @@ lyric >
 `dirs -v`
 Direct access to paths: `~1`, `~2` ...
 `popd`, `pushd`, or reset `dirs ~/work/proj1 ~/work/proj2 ~/work/proj3`
+
 -----
 __brace expansion__
 ```
@@ -40,5 +41,11 @@ logfile.990307.tmp  logfile.990315.tmp  logfile.990323.tmp ogfile.990331.tmp
 logfile.990308.tmp  logfile.990316.tmp  logfile.990324.tmp
 ```
 ---
+__Tab completion__
 
+`compctl [ -CDT ] options [command ...]`
+
+* Completion definitions start with the command compctl on the command line.
+* Completion definitions end with the names of command(s) you'd like to complete.
+* The list of options specify all types of items you'd like eligible for completion. (Variables, options, filenames, jobs, etc.)
 
