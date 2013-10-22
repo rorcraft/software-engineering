@@ -37,3 +37,11 @@ Ports
 /etc/services
 
 IPv6 with port '[::1]:23' , ':80'
+
+__SPDY__
+
+http://www.ietf.org/proceedings/83/slides/slides-83-httpbis-3
+
+__HTTP2__
+
+http://www.igvita.com/slides/2012/http2-spdy-devconf.pdf
