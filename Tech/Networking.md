@@ -38,6 +38,9 @@ Ports
 
 IPv6 with port '[::1]:23' , ':80'
 
+Slow start
+* init window tuning - http://www.cdnplanet.com/blog/tune-tcp-initcwnd-for-optimum-performance/
+
 __SPDY__
 
 http://www.ietf.org/proceedings/83/slides/slides-83-httpbis-3
