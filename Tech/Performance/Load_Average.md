@@ -1,5 +1,7 @@
 ### Load Averages
 
+> the load averages tell us by increasing duration whether our physical CPUs are over- or under-utilized.
+ 
 `top - 21:35:08 up 8 days, 16:22,  2 users,  load average: 1.11, 1.14, 1.16`
 1-minute, 5-minute and 15-minute average.
 
@@ -51,3 +53,11 @@ sched.h, a header used by much of the kernel code. In there, the CALC_LOAD macro
 > When x=1, then y=1884; when x=5, then y=2014; and when x=15, then y=2037. The purpose of the magical numbers is that it allows the CALC_LOAD macro to use precision fixed-point representation of fractions. The magic numbers are then nothing more than multipliers used against the running load average to make it a moving average. 
 
 > As the load average goes above the number of physical CPUs, the more the CPU is being used and the more demand there is for it. And, as it recedes, the less of a demand there is. With this understanding, the load average can be used with the CPU percentage to obtain a more accurate view of CPU activity.
+
+----------------
+
+### Exponentially Weighted Moving Average
+https://github.com/VividCortex/ewma
+
+
+
