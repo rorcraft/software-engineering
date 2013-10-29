@@ -36,7 +36,7 @@ __Mac OS X__
 
 ### Protip
 
-__Esc key timeout
+__Esc key timeout__
 * vimrc `set timeoutlen=1000 ttimeoutlen=0`
 * zsh # 10ms for key sequences `KEYTIMEOUT=1`
 * tmux `set -sg escape-time 0`
