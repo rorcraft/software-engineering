@@ -5,7 +5,7 @@
 * Don't use prepackaged vim config. But take a look at square/maximum-awesome
 * key bindings - (mode)map <key> <command>
 * <leader> to trigger keys
-* grammar - <command> [<count>] <motion> e.g. f4a, ciw, de
+* grammar - `[register][num/range]<verb><motion|(i|a)<text object>>` e.g. f4a, ciw, de
 
 ## Resources for learning.
 
