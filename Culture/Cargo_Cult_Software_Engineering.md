@@ -10,10 +10,10 @@ __key distinction is a clueless imitation of a particular activity (project mana
 
 > The cargo cultists had the unimportant surface elements right, but did not see enough of the whole picture to succeed. They understood the form but not the content.  There are lots of cargo cult programmers -- __programmers who understand what the code does, but not how it does it.  Therefore, they cannot make meaningful changes to the program.  They tend to proceed by making random changes, testing, and changing again until they manage to come up with something that works.__
 
-# The most common form of cargo cult programming characterized by the extreme adherence to the form instead of content ( CMM and, to a lesser extent,  extreme programming  are good examples). 
-# Another form is closely connected with outsourcing and related communication problems. This variant of cargo cult programming often includes absurd  "to the word" following of the specification even if it contains blunders and/or was completely detached from reality.
-# The ritual usage of fashionable technologies like OO ten years ago are a third popular form and actually is the mildest cases of the same (is not OO good in all cases ? ;-).  OO fundamentalists made cargo cult programming almost an art form. Much of a typical university textbooks expose student not to programming methodology but to some fake concepts fashionable for the last two-three years.
-# Rare and extreme cases include debugging without understanding underling language. One such case was described by Weinberg.
+1. The most common form of cargo cult programming characterized by the extreme adherence to the form instead of content ( CMM and, to a lesser extent,  extreme programming  are good examples). 
+2. Another form is closely connected with outsourcing and related communication problems. This variant of cargo cult programming often includes absurd  "to the word" following of the specification even if it contains blunders and/or was completely detached from reality.
+3. The ritual usage of fashionable technologies like OO ten years ago are a third popular form and actually is the mildest cases of the same (is not OO good in all cases ? ;-).  OO fundamentalists made cargo cult programming almost an art form. Much of a typical university textbooks expose student not to programming methodology but to some fake concepts fashionable for the last two-three years.
+4. Rare and extreme cases include debugging without understanding underling language. One such case was described by Weinberg.
 
 When used knowledgeably, either development style can produce high quality software economically and quickly. But both development styles have pathological lookalikes that don’t work nearly as well, and that can be difficult to distinguish from the genuine articles.
 
