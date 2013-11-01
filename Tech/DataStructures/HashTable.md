@@ -6,6 +6,7 @@
 
 ### Dynamic Sizing
 
+TBA
 
 __Distributed Hash Table__
 
@@ -13,7 +14,8 @@ http://engineering.bittorrent.com/2013/01/22/bittorrent-tech-talks-dht/
 
 __Redis__
 
-http://stackoverflow.com/questions/10004565/redis-10x-more-memory-usage-than-data
+* http://stackoverflow.com/questions/10004565/redis-10x-more-memory-usage-than-data
+* http://redis.io/topics/memory-optimization
 
 ```
 # Hashes are encoded in a special way (much more memory efficient) when they
