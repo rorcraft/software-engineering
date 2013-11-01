@@ -137,3 +137,22 @@ Git has two data structures: a mutable index (also called stage or cache) that c
 $ git verify-pack -v \
   .git/objects/pack/pack-7a16e4488ae40c7d2bc56ea2bd43e25212a66c45.idx
 ```
+
+### Refspec
+
+```
+$ git log origin/master
+$ git log remotes/origin/master
+$ git log refs/remotes/origin/master # same, auto expanded
+```
+
+```
+[remote "origin"]
+       url = git@github.com:schacon/simplegit-progit.git
+       fetch = +refs/heads/*:refs/remotes/origin/* # every branch
+       fetch = +refs/heads/qa/*:refs/remotes/origin/qa/* # namespace
+       fetch = +refs/heads/master:refs/remotes/origin/master # just master
+       push = refs/heads/master:refs/heads/qa/master # auto push to qa namespace
+```
+`+` update the reference even if it isn’t a fast-forward
+`*` every branch from remote 
