@@ -2,7 +2,7 @@
  
 ### PermGen
 
-### 2 survivor spaces (Copying Garbage Collector
+### 2 survivor spaces (Copying Garbage Collector)
 
 The role of two survivor spaces gets reversed after the operation of a minor garbage collection
 
