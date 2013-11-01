@@ -23,7 +23,9 @@ objects/ #  stores all the content for your database
 refs/ # pointers into commit objects in that data (branches)
 ```
 
-Content-addressable filesystem = key-value data store
+### 3 main object types: Blob, Tree, Commit, + Tag.
+
+__Content-addressable filesystem = key-value data store__
 
 __Blob__
 
@@ -67,7 +69,53 @@ Read trees into your staging area by calling `read-tree`.
  
 __Commit Objects__
 
+```
+$ echo 'first commit' | git commit-tree d8329f # tree object
+fdf4fc3344e67ab068f836878b6c4951e3b15f3d
+$ echo 'second commit' | git commit-tree 0155eb -p fdf4fc3 # tree object on top of last commit object
+cac0cab538b970a37ea1e769cbbde608743bc96d
+```
 
+![](http://git-scm.com/figures/18333fig0903-tn.png)
+
+__Data Storage Format__
+
+* header that starts with the type of the object, in this case a blob. Then, it adds a space followed by the size of the content and finally a null byte:
+* concatenates the header and the original content and then calculates the SHA-1 checksum of that new content
+* compresses the new content with zlib
+
+```
+=> "blob 16\000what is up, doc?"
+=> "bd9dbf5aae1a3862dd1526723246b20206e5fc37"
+=> "x\234K\312\311OR04c(\317H,Q\310,V(-\320QH\311O\266\a\000_\034\a\235"
+```
+
+### Branching == References
+```
+git update-ref refs/heads/master 1a410efbd13591db07496601ebc7a059dd55cfe9
+# same as
+echo "1a410efbd13591db07496601ebc7a059dd55cfe9" > .git/refs/heads/master 
+# same as
+git branch master 
+```
+
+`git commit`, it creates the commit object, specifying the parent of that commit object to be whatever SHA-1 value the reference in HEAD points to.
+
+```
+$ git symbolic-ref HEAD refs/heads/test # sets or print the content of .git/HEAD
+$ cat .git/HEAD
+ref: refs/heads/test
+```
+
+Remote references differ from branches (refs/heads references) mainly in that they can’t be checked out. Git moves them around as bookmarks to the last known state of where those branches were on those servers.
+
+__Tags__
+
+Tag is — a branch that never moves. Tag object points to a commit, it contains a tagger, a date, a message, and a pointer.
+
+You can tag any Git object. In the Git source code, for example, the maintainer has added their GPG public key as a blob object and then tagged it. You can view the public key by running
+
+`$ git cat-file blob junio-gpg-pub`
 
 Git has two data structures: a mutable index (also called stage or cache) that caches information about the working directory and the next revision to be committed; and an immutable, append-only object database.
 
