@@ -13,3 +13,5 @@ During the operation of a minor garbage collection, objects that have been found
 At the end of the minor garbage collection, the two survivor spaces swap roles. The eden is entirely empty; only one survivor space is in use; and the occupancy of the old generation has grown slightly. Because live objects are copied during its operation, this type of garbage collector is called a copying garbage collector.
 
 * http://blogs.msdn.com/b/abhinaba/archive/2009/02/02/back-to-basics-copying-garbage-collection.aspx
+
+__primary advantage is that allocation is extremely fast__
