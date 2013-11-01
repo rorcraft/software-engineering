@@ -117,5 +117,23 @@ You can tag any Git object. In the Git source code, for example, the maintainer 
 
 `$ git cat-file blob junio-gpg-pub`
 
+### Packfiles
+
+The initial format in which Git saves objects on disk is called a loose object format. However, occasionally Git packs up several of these objects into a single binary file called a packfile in order to save space and be more efficient. Git does this if you have too many loose objects around, if you run the git gc command manually, or if you push to a remote server. 
+
+* The packfile is a single file containing the contents of all the objects that were removed from your filesystem. 
+* The index is a file that contains offsets into that packfile so you can quickly seek to a specific object.
+
+```
+.git/objects/info/packs
+.git/objects/pack/pack-7a16e4488ae40c7d2bc56ea2bd43e25212a66c45.idx
+.git/objects/pack/pack-7a16e4488ae40c7d2bc56ea2bd43e25212a66c45.pack
+```
+
+>  second version of the file is the one that is stored intact, whereas the original version is stored as a delta
 Git has two data structures: a mutable index (also called stage or cache) that caches information about the working directory and the next revision to be committed; and an immutable, append-only object database.
 
+```
+$ git verify-pack -v \
+  .git/objects/pack/pack-7a16e4488ae40c7d2bc56ea2bd43e25212a66c45.idx
+```
