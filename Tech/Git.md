@@ -5,6 +5,8 @@ _git_, which is British English slang roughly equivalent to "unpleasant person".
 * http://git-scm.com/book/en/Git-Internals
 * http://www.infoq.com/presentations/git-index
 * http://en.wikipedia.org/wiki/Git_(software)
+* https://github.com/pluralsight/git-internals-pdf/releases (Peepcode git book)
+* http://www.aosabook.org/en/git.html
 
 "plumbing" commands - low-level commands and designed to be chained together UNIX style
 
@@ -156,3 +158,146 @@ $ git log refs/remotes/origin/master # same, auto expanded
 ```
 `+` update the reference even if it isn’t a fast-forward
 `*` every branch from remote 
+
+### Protocol
+
+__Dump HTTP__ (github stopped supporting since 2011)
+
+* Does not require a git server, relies on .git directory structure.
+
+```
+=> GET info/refs 
+ca82a6dff817ec66f44342007202690a93763949     refs/heads/master
+=> GET HEAD
+ref: refs/heads/master
+=> GET objects/ca/82a6dff817ec66f44342007202690a93763949 # because thats the head
+(179 bytes of binary data)
+=> GET objects/08/5bb3bcb608e1e8451d4b2432f8ecbe6306e7e7 # parent commit
+(179 bytes of data)
+=> GET objects/cf/da3bf379e4f8dba8717dee55aab78aef7f4daf
+(404 - Not Found) # could be in an alternate repository
+=> GET objects/info/http-alternates
+(empty file)
+=> GET objects/info/packs
+P pack-816a9b2334da9953e530f27bcac22082a9f5b835.pack
+=> GET objects/pack/pack-816a9b2334da9953e530f27bcac22082a9f5b835.idx
+(4k of binary data)
+=> GET objects/pack/pack-816a9b2334da9953e530f27bcac22082a9f5b835.pack
+(13k of binary data)
+```
+
+__Smart HTTP__
+
+http://git-scm.com/blog/2010/03/04/smart-http.html
+
+CGI script that is provided with Git called `git-http-backend` on the server.
+
+__SSH__
+
+__Upload__
+
+* `send-pack` runs on client
+* `receive-pack` runs on server
+
+```
+$ git push origin master # runs send-pack, like below
+$ ssh -x git@github.com "git-receive-pack 'schacon/simplegit-progit.git'"
+005bca82a6dff817ec66f4437202690a93763949 refs/heads/master report-status delete-refs
+003e085bb3bcb608e1e84b2432f8ecbe6306e7e7 refs/heads/topic
+0000
+```
+* Each line starts with a 4-byte hex value specifying how long the rest of the line is. (005b = 91 bytes)
+* `send-pack` process determines what commits it has that the server doesn’t. 
+* `send-pack` replies with each reference that this push will update
+
+```
+0085ca82a6dff817ec66f44342007202690a93763949  15027957951b64cf874c3557a0f3547bd83b3ff6 refs/heads/master report-status
+00670000000000000000000000000000000000000000 cdfdb42577e2506715f8cfeacdbabc092bf63e8d refs/heads/experiment
+0000
+```
+* Next, the client uploads a packfile of all the objects the server doesn’t have yet. 
+* Finally, the server responds with a success (or failure) indication:
+
+```
+000Aunpack ok
+```
+
+__Download__
+
+* `fetch-pack` runs on client
+* `upload-pack` runs on server
+* Git daemon, which listens on a server on port 9418 by default.
+
+In either case, after fetch-pack connects, upload-pack sends back something like this:
+```
+0088ca82a6dff817ec66f44342007202690a93763949 HEAD\0multi_ack thin-pack \
+  side-band side-band-64k ofs-delta shallow no-progress include-tag
+003fca82a6dff817ec66f44342007202690a93763949 refs/heads/master
+003e085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7 refs/heads/topic
+0000 
+```
+`upload-pack` replies:
+```
+0054want ca82a6dff817ec66f44342007202690a93763949 ofs-delta
+0032have 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7
+0000
+0009done
+```
+
+### gc
+
+If you run git gc, you’ll no longer have these files in the refs directory. Git will move them for the sake of efficiency into a file named .git/packed-refs that looks like this:
+```
+$ cat .git/packed-refs
+# pack-refs with: peeled
+cac0cab538b970a37ea1e769cbbde608743bc96d refs/heads/experiment
+ab1afef80fac8e34258ff41fc1b867c702daa24b refs/heads/master
+cac0cab538b970a37ea1e769cbbde608743bc96d refs/tags/v1.0
+9585191f37f7b0fb9444f35a9bf50de191beadc2 refs/tags/v1.1
+^1a410efbd13591db07496601ebc7a059dd55cfe9 # tag directly above is an annotated tag
+```
+
+### reflog & recovery
+
+* Git silently records what your HEAD is every time you change it. Each time you commit or change branches, the reflog is updated. The reflog is also updated by the `git update-ref` command.
+* `.git/logs/`
+* `git log -g` - normal log output for your reflog
+* You can recover commits by creating a new branch at that commit: `git branch (branchname) (sha)`
+
+```
+$ git fsck --full # shows all objects that aren't pointed to another object
+dangling blob d670460b4b4aece5915caf5c68d12f560a9fe3e4
+dangling commit ab1afef80fac8e34258ff41fc1b867c702daa24b
+dangling tree aea790b9a58f6cf6f2804eeac9f0abbe9631e4c9
+dangling blob 7108f7ecb345ee9d0084193f147cdad4d2998293
+```
+
+```
+$ git count-objects -v
+count: 4
+size: 16
+in-pack: 21
+packs: 1
+size-pack: 2016 # size of your packfiles in kilobyte
+prune-packable: 0
+garbage: 0
+```
+
+remove file from history
+```
+$ git filter-branch --index-filter \
+   'git rm --cached --ignore-unmatch git.tbz2' -- 6df7640^..   # remove from index instead of file, which require checkout
+Rewrite 6df764092f3e7c8f5f94cbe08ee5cf42e92a0289 (1/2)rm 'git.tbz2'
+Rewrite da3f30d019005479c99eb4c3406225613985a1db (2/2)
+Ref 'refs/heads/master' was rewritten
+```
+see more filter-branch: http://git-scm.com/book/ch6-4.html
+
+### Merges
+
+http://en.wikipedia.org/wiki/Three-way_merge#Three-way_merge
+
+### Pack heuristics
+
+* http://git.kernel.org/cgit/git/git.git/tree/Documentation/technical/pack-heuristics.txt?id=HEAD
+* http://stackoverflow.com/questions/5176225/are-gits-pack-files-deltas-rather-than-snapshots
