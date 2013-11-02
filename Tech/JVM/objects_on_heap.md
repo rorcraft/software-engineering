@@ -5,7 +5,22 @@ __From code to Heap__
 
 __Native Process Memory__
 
-http://www.ibm.com/developerworks/java/library/j-nativememory-linux/
+* http://www.ibm.com/developerworks/java/library/j-nativememory-linux/
+* http://www.oracle.com/technetwork/java/javase/memleaks-137499.html#gbyvk
+* http://www.oracle.com/technetwork/java/javase/clopts-139448.html#gbmtq
+
+- Generated (JIT:ed) code (both the input (the bytecode) and the output (the executable code))
+- Loaded libraries (including jar and class files)
+- Control structures for the java heap
+- Thread Stacks
+- User native memory (malloc:ed in JNI)
+
+Reserving native memory is not the same as allocating it. When native memory is reserved, it is not backed with physical memory or other storage. Although reserving chunks of the address space will not exhaust physical resources, it does prevent that memory from being used for other purposes. 
+
+NIO - Direct ByteBuffers can be passed directly to native OS library functions for performing I/O — making them significantly faster in some scenarios because they can avoid copying data between Java heap and native heap.  
+The application still uses an object on the Java heap to orchestrate I/O operations, but the buffer that holds the data is held in native memory — the Java heap object only contains a reference to the native heap buffer. A non-direct ByteBuffer holds its data in a byte[] array on the Java heap
+
+Some implementations allow you to specify the stack size for Java threads. Values between 256KB and 756KB are typical.
 
 ### Anatomy of a Java object
 
