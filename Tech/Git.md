@@ -308,3 +308,8 @@ http://pivotallabs.com/git-rebase-onto/
 
 `git rebase --onto (new base) (old base to cut from) [optional](new head to replace)`
 `git rebase --onto topicC topicA topicB`
+
+
+### Rebase preserve-merges
+
+http://stackoverflow.com/questions/15915430/what-exactly-does-gits-rebase-preserve-merges-do-and-why
