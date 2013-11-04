@@ -301,3 +301,10 @@ http://en.wikipedia.org/wiki/Three-way_merge#Three-way_merge
 
 * http://git.kernel.org/cgit/git/git.git/tree/Documentation/technical/pack-heuristics.txt?id=HEAD
 * http://stackoverflow.com/questions/5176225/are-gits-pack-files-deltas-rather-than-snapshots
+
+### Rebase onto
+
+http://pivotallabs.com/git-rebase-onto/
+
+`git rebase --onto (new base) (old base to cut from) [optional](new head to replace)`
+`git rebase --onto topicC topicA topicB`
