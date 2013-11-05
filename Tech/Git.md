@@ -313,3 +313,10 @@ http://pivotallabs.com/git-rebase-onto/
 ### Rebase preserve-merges
 
 http://stackoverflow.com/questions/15915430/what-exactly-does-gits-rebase-preserve-merges-do-and-why
+
+> Rebase is not part of Git's C core, but rather is written in bash. And, behind the scenes, it shares code with "interactive rebase".
+
+https://github.com/git/git/blob/master/git-rebase--interactive.sh
+
+* merge-preserving rebase has to define what it means to replay a merge commit, and deal with some extra wrinkles  The most interesting part, conceptually, is perhaps in picking what the new commit's merge parents should be.  Replaying merge commits also require explicitly checking out particular commits ("git checkout <desired first parent>"), whereas normal rebase doesn't have to worry about that.
+* Merge-preserving rebase considers a shallower set of commits for replay:  In particular, it will only consider replaying commits made since the most recent merge base(s) -- ie the most recent time the two branches diverged --, whereas normal rebase might replay commits going back to the first time the two branches diverged.  To be provisional and unclear, I believe this is ultimately a means to screen out replaying "old commits" that have already been "incorporated into" a merge commit.
