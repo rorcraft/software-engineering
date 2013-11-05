@@ -15,7 +15,9 @@
 * vimtutor (comes with vim)
 * http://vimcast.org, also "Practical Vim" book.
 * http://vim-adventures.com/ (game)
+* http://vimgolf.com
 * Sublime vintage mode.
+* https://github.com/lunixbochs/actualvim
 
 ## Modes
 
