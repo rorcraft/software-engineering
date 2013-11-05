@@ -33,6 +33,12 @@ Aircrack tool:
 * http://www.aircrack-ng.org/
 * http://www.irongeek.com/i.php?page=videos/bsideslasvegas2013/2-2-6-the-slings-and-arrows-of-open-source-security-tod-beardsley-and-mister-x
 
+__HttpOnly Cookie__
+
+https://www.owasp.org/index.php/HttpOnly
+
+Attempts to avoid XSS to access cookie even if a user is exposed to the XSS.
+
 ### DDOS
 
 __SYN Flooding__ - http://tools.ietf.org/html/rfc4987 
