@@ -28,3 +28,7 @@ http://www.watchguard.com/infocenter/editorial/135324.asp
 ARP poisoning
 * The hacker begins by sending a malicious ARP "reply" (for which there was no previous request) to your router. ( router thinks the hacker's computer is your computer)
 * Next, the hacker sends a malicious ARP reply to your computer, associating his MAC Address with 192.168.0.1.  (your machine thinks the hacker's computer is your router)
+
+### DDOS
+
+__SYN Flooding__ - http://tools.ietf.org/html/rfc4987 
