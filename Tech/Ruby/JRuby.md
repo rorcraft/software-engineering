@@ -157,3 +157,14 @@ bundle binstub rspec-core
 ```
 `bundle exec` requires the executable script and call `exec` to replace the process. 
 From the wiki "Avoid spawning sub-rubies".
+
+# JRuby Internals
+
+* http://marcelozambranav.blogspot.com/2011/01/jruby-hacking-guide.html
+* http://realjenius.com/2009/09/16/distilling-jruby-method-dispatching-101/
+* https://kenai.com/projects/jruby/pages/Internals
+* http://www.infoq.com/news/2009/11/jruby-ir
+* http://blog.headius.com/2010/05/kicking-jruby-performance-up-notch.html
+* http://prezi.com/ebpcrtgmwgln/jruby-source-code-reading-guide/
+* https://docs.google.com/spreadsheet/ccc?key=0AiZsKd8d4hSJdHVFYk1jcFVwY29sUWxpdFZyajVqdGc&hl=en#gid=0
+* MRI Ruby hacking guide - http://rhg.rubyforge.org/
