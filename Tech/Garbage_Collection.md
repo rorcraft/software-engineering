@@ -16,6 +16,7 @@ http://furious-waterfall-55.heroku.com/ruby-guide/internals/gc.html
 
 __JVM GC__:
 http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html
+http://blog.mgm-tp.com/2013/03/garbage-collection-tuning/
 
 Monitor GC:
 * https://blog.engineyard.com/2010/monitoring-the-jvm-heap-with-jruby
