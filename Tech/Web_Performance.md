@@ -47,7 +47,6 @@ __What is fast enough?__
 
 __Browser__
 
-* Browser parsing 
   * HTML - DOM
   * CSS tree
   * execute javascript - v8
