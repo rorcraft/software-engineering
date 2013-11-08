@@ -47,9 +47,10 @@ __What is fast enough?__
 
 __Browser__
 
-  * HTML - DOM
+  * HTML - DOM (Bytes -> Characters -> Tokens -> Nodes -> Dom)
+  * Sync Javascript will block render of page. (defer, async)
   * CSS tree
-  * execute javascript - v8
+  * Executing javascript - V8
   * render (paint and composite) into rasterized images - blink (multithreaded)
   * Rails4 - Turbolinks - ajax replace content to avoid reparsing css, js.
   * Chrome does a lot of prediction.
