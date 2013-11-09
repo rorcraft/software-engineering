@@ -20,3 +20,4 @@ __primary advantage is that allocation is extremely fast__
 
 JVM internals
 - http://www.artima.com/insidejvm/ed2/jvm.html (old)
+- http://www.cubrid.org/blog/dev-platform/understanding-jvm-internals/
