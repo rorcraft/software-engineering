@@ -15,3 +15,5 @@ At the end of the minor garbage collection, the two survivor spaces swap roles. 
 * http://blogs.msdn.com/b/abhinaba/archive/2009/02/02/back-to-basics-copying-garbage-collection.aspx
 
 __primary advantage is that allocation is extremely fast__
+
+[Concurrency & Garbage Collection - Considerations as the JVM Goes to Big Data](http://www.youtube.com/watch?v=8BwXijVmvKk)
