@@ -17,3 +17,6 @@ At the end of the minor garbage collection, the two survivor spaces swap roles. 
 __primary advantage is that allocation is extremely fast__
 
 [Concurrency & Garbage Collection - Considerations as the JVM Goes to Big Data](http://www.youtube.com/watch?v=8BwXijVmvKk)
+
+JVM internals
+- http://www.artima.com/insidejvm/ed2/jvm.html (old)
