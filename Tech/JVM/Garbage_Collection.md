@@ -21,3 +21,10 @@ __primary advantage is that allocation is extremely fast__
 JVM internals
 - http://www.artima.com/insidejvm/ed2/jvm.html (old)
 - http://www.cubrid.org/blog/dev-platform/understanding-jvm-internals/
+
+Collector
+- http://stackoverflow.com/questions/2101518/difference-between-xxuseparallelgc-and-xxuseparnewgc
+- http://sureshsvn.com/jvm.html
+- http://www.cubrid.org/blog/dev-platform/understanding-java-garbage-collection/
+- http://www.oracle.com/technetwork/java/javase/memorymanagement-whitepaper-150215.pdf
+- http://www.infoq.com/articles/G1-One-Garbage-Collector-To-Rule-Them-All
