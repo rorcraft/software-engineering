@@ -47,6 +47,7 @@ __Flags for old generation__
 `-XX:+UseParallelOldGC` (STW) _by default_
 
 `-XX:+UseConcMarkSweepGC` (Concurrent Mark and Sweep - CMS) - 6 phases
+
 1. the initial-mark phase (stop-the-world, snapshot the old generation so that we can run most of the rest of the collection concurrent to the application threads);
 2. the mark phase (concurrent, mark the live objects traversing the object graph from the roots);
 3. the pre-cleaning phase (concurrent);
@@ -60,10 +61,14 @@ If "the rate of creation" of objects is too high, and the concurrent collector i
 `-Xincgc` (Incremental Collector)
 * Uses a "train" algorithm to collect small portions of the old generation at a time. STW pause is minimized at the cost of total garbage collection taking longer.
 
-Garbage first (G1)
+`-XX:+UseG1GC` Garbage first (G1)
 
 __Compaction__
 
+
+__Pauseless GC__
+
+http://www.artima.com/lejava/articles/azul_pauseless_gc.html
 
 
 JVM internals
@@ -72,7 +77,6 @@ JVM internals
 - http://www.cubrid.org/blog/dev-platform/understanding-jvm-internals/
 
 Collector
-- http://stackoverflow.com/questions/2101518/difference-between-xxuseparallelgc-and-xxuseparnewgc
 - http://sureshsvn.com/jvm.html
 - http://www.cubrid.org/blog/dev-platform/understanding-java-garbage-collection/
 - http://www.oracle.com/technetwork/java/javase/memorymanagement-whitepaper-150215.pdf
