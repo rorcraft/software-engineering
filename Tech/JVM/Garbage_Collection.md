@@ -19,6 +19,7 @@ __primary advantage is that allocation is extremely fast__
 [Concurrency & Garbage Collection - Considerations as the JVM Goes to Big Data](http://www.youtube.com/watch?v=8BwXijVmvKk)
 
 JVM internals
+- http://www.slideshare.net/waterfox1/an-introduction-to-jvm-internals-and-garbage-collection-in-java
 - http://www.artima.com/insidejvm/ed2/jvm.html (old)
 - http://www.cubrid.org/blog/dev-platform/understanding-jvm-internals/
 
