@@ -16,7 +16,55 @@ At the end of the minor garbage collection, the two survivor spaces swap roles. 
 
 __primary advantage is that allocation is extremely fast__
 
-[Concurrency & Garbage Collection - Considerations as the JVM Goes to Big Data](http://www.youtube.com/watch?v=8BwXijVmvKk)
+### Strategies
+
+* http://www.javaperformancetuning.com/news/qotm026.shtml
+* http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html
+
+__Stop the world (STW)__
+
+- Serial (single threaded)
+- Parallel (multi threaded, higher throughput) (not exactly mean concurrent!)
+
+__Concurrent__
+
+- = single thread running along side with other threads.
+
+__Flags for young generation:__
+
+`-XX:+UseSerialGC` (Copying Collector) (STW)
+
+`-XX:+UseParallelGC` (Parallel Scavenge Collector) (STW) 
+* tuned for gigabytes heaps, (over 10GB). 
+* It has an optional adaptive tuning policy which will automatically resize heap spaces.
+* Does not work with CMS.  
+
+`-XX:+UseParNewGC` (Parallel Copying Collector) (STW)  
+* Works with CMS
+ 
+__Flags for old generation__
+
+`-XX:+UseParallelOldGC` (STW) _by default_
+
+`-XX:+UseConcMarkSweepGC` (Concurrent Mark and Sweep - CMS) - 6 phases
+1. the initial-mark phase (stop-the-world, snapshot the old generation so that we can run most of the rest of the collection concurrent to the application threads);
+2. the mark phase (concurrent, mark the live objects traversing the object graph from the roots);
+3. the pre-cleaning phase (concurrent);
+4. the re-mark phase (stop-the-world, another snapshot to capture any changes to live objects since the collection started);
+5. the sweep phase (concurrent, recycles memory by clearing unreferenced objects);
+6. the reset phase (concurrent).
+If "the rate of creation" of objects is too high, and the concurrent collector is not able to keep up with the concurrent collection, it falls back to the traditional mark-sweep collector.
+
+* `-XX:+CMSIncrementalMode` 
+
+`-Xincgc` (Incremental Collector)
+* Uses a "train" algorithm to collect small portions of the old generation at a time. STW pause is minimized at the cost of total garbage collection taking longer.
+
+Garbage first (G1)
+
+__Compaction__
+
+
 
 JVM internals
 - http://www.slideshare.net/waterfox1/an-introduction-to-jvm-internals-and-garbage-collection-in-java
@@ -29,3 +77,6 @@ Collector
 - http://www.cubrid.org/blog/dev-platform/understanding-java-garbage-collection/
 - http://www.oracle.com/technetwork/java/javase/memorymanagement-whitepaper-150215.pdf
 - http://www.infoq.com/articles/G1-One-Garbage-Collector-To-Rule-Them-All
+
+Talks:
+- [Concurrency & Garbage Collection - Considerations as the JVM Goes to Big Data](http://www.youtube.com/watch?v=8BwXijVmvKk)
