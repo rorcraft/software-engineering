@@ -5,6 +5,8 @@ __Intro__
 
 ![](http://sureshsvn.com/jvm.png)
 
+__Generational__ 
+
 > weak generational hypothesis - most objects die young
 
 __Young Gen__
@@ -25,8 +27,9 @@ Whenever an object in the old generation references an object in the young gener
 "card table" in the old generation, which is a 512 byte chunk.
 When a GC is executed for the young generation, only this card table is searched to determine whether or not it is subject for GC, instead of checking the reference of all the objects in the old generation. This card table is managed with write barrier.
 
+__Young Gen is Copy Collector__
 
-__1 Eden space, 2 survivor spaces in Young Gen__
+__1 Eden space, 2 survivor spaces__
 
 _primary advantage is that allocation is extremely fast_
 
@@ -51,7 +54,7 @@ __Stop the world (STW)__
 
 __Concurrent__
 
-- = single thread running along side with other threads.
+- = single thread running along side with other threads. (!= parallel)
 
 __Flags for young generation:__
 
@@ -80,6 +83,8 @@ __Flags for old generation__
 If "the rate of creation" of objects is too high, and the concurrent collector is not able to keep up with the concurrent collection, it falls back to the traditional mark-sweep collector.
 
 * `-XX:+CMSIncrementalMode` - http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html 
+
+__No compaction__, uses a free-list, if compaction is needed - fall back to STW Compaction.
 
 `-Xincgc` (Incremental Collector)
 * Uses a "train" algorithm to collect small portions of the old generation at a time. STW pause is minimized at the cost of total garbage collection taking longer.
@@ -142,4 +147,5 @@ Garbage Collection
 - http://www.oracle.com/technetwork/java/javase/memorymanagement-whitepaper-150215.pdf
 
 Talks:
+- [Understanding Java Garbage Collection and what you can do about it](http://www.youtube.com/watch?v=we_enrM7TSY)
 - [Concurrency & Garbage Collection - Considerations as the JVM Goes to Big Data](http://www.youtube.com/watch?v=8BwXijVmvKk)
