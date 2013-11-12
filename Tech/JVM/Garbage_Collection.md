@@ -13,7 +13,7 @@ __Young Gen__
 
 Most of the newly created objects are located here. When objects disappear from this area, we say a "minor GC" has occurred. 
 
-__Old Gen__
+__Old Gen (Tenured)__
  
 The objects that did not become unreachable and survived from the young generation are copied here. When objects disappear from the old generation, we say a "major GC" (or a "full GC") has occurred. 
  
