@@ -145,6 +145,7 @@ JVM internals
 Garbage Collection 
 - http://www.cubrid.org/blog/dev-platform/understanding-java-garbage-collection/
 - http://www.oracle.com/technetwork/java/javase/memorymanagement-whitepaper-150215.pdf
+- http://www.cubrid.org/blog/dev-platform/how-to-tune-java-garbage-collection/
 
 Talks:
 - [Understanding Java Garbage Collection and what you can do about it](http://www.youtube.com/watch?v=we_enrM7TSY)
