@@ -7,25 +7,37 @@ __Intro__
 
 > weak generational hypothesis - most objects die young
 
-__Eden (Young Gen)__
+__Young Gen__
+
+Most of the newly created objects are located here. When objects disappear from this area, we say a "minor GC" has occurred. 
 
 __Old Gen__
  
+The objects that did not become unreachable and survived from the young generation are copied here. When objects disappear from the old generation, we say a "major GC" (or a "full GC") has occurred. 
+ 
 __PermGen__
 
-__2 survivor spaces (Copying Garbage Collector)__
+"method area," and it stores classes or interned character strings. So, this area is definitely not for objects that survived from the old generation to stay permanently. 
 
-The role of two survivor spaces gets reversed after the operation of a minor garbage collection
+__Card table__
 
-The two survivor spaces. These hold objects that have survived at least one minor garbage collection but have been given another chance to become unreachable before being promoted to the old generation. Only one of them holds objects, while the other is most of the time unused.
+Whenever an object in the old generation references an object in the young generation, it is recorded in this table.
+"card table" in the old generation, which is a 512 byte chunk.
+When a GC is executed for the young generation, only this card table is searched to determine whether or not it is subject for GC, instead of checking the reference of all the objects in the old generation. This card table is managed with write barrier.
 
-During the operation of a minor garbage collection, objects that have been found to be garbage will be marked. Live objects in the eden that survive the collection are copied to the unused survivor space. Live objects in the survivor space that is in use, which will be given another chance to be reclaimed in the young generation, are also copied to the unused survivor space. Finally, live objects in the survivor space that is in use, that are deemed “old enough,” are promoted to the old generation.
 
-At the end of the minor garbage collection, the two survivor spaces swap roles. The eden is entirely empty; only one survivor space is in use; and the occupancy of the old generation has grown slightly. Because live objects are copied during its operation, this type of garbage collector is called a copying garbage collector.
+__1 Eden space, 2 survivor spaces in Young Gen__
 
-* http://blogs.msdn.com/b/abhinaba/archive/2009/02/02/back-to-basics-copying-garbage-collection.aspx
+_primary advantage is that allocation is extremely fast_
 
-__primary advantage is that allocation is extremely fast__
+The order of execution process of each space is as below:
+* The majority of newly created objects are located in the Eden space.
+* After one GC in the Eden space, the surviving objects are moved to one of the Survivor spaces. 
+* After a GC in the Eden space, the objects are piled up into the Survivor space, where other surviving objects already exist.
+* Once a Survivor space is full, surviving objects are moved to the other Survivor space. Then, the Survivor space that is full will be changed to a state where there is no data at all.
+* The objects that survived these steps that have been repeated a number of times are moved to the old generation.
+
+in HotSpot VM, two techniques are used for faster memory allocations. One is called "bump-the-pointer," and the other is called "TLABs (Thread-Local Allocation Buffers)."
 
 ### Strategies
 
