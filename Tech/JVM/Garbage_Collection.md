@@ -150,5 +150,7 @@ Talks:
 - [Understanding Java Garbage Collection and what you can do about it](http://www.youtube.com/watch?v=we_enrM7TSY)
 - [Concurrency & Garbage Collection - Considerations as the JVM Goes to Big Data](http://www.youtube.com/watch?v=8BwXijVmvKk)
 
+Tools:
+- http://www.azulsystems.com/products - Zing
 - http://www.azulsystems.com/jHiccup
 - https://github.com/bitcharmer/heaptrasher
