@@ -42,6 +42,9 @@ http://www.mysqlperformanceblog.com/2006/08/04/innodb-double-write/
 
 ## Group commit 
 
+- https://www.facebook.com/note.php?note_id=386328905932
+- http://kristiannielsen.livejournal.com/12553.html
+
 ![](http://knielsen-hq.org/maria/fix-group-commit-1.png)
 
 If we have several transactions running concurrently, all waiting to fsync their data in the commit step, we can use a single fsync() call to flush them all to physical storage in one go. 
