@@ -52,3 +52,9 @@ If we have several transactions running concurrently, all waiting to fsync their
 To fix the broken group commit - The basic idea is to only do fsync() for the binary log, not for the storage engine, corresponding to running with innodb_flush_log_at_trx_commit set to 2 or even 0.
 
 transactions can coordinate with each other to make sure they go into the engine in the order dictated by the queue, global transaction id, or ticket.
+
+### Insert Buffer
+
+http://www.mysqlperformanceblog.com/2009/01/13/some-little-known-facts-about-innodb-insert-buffer/
+
+ Even though it is called “buffer” similar to “doublewrite buffer” it is really the space in the tablepace. Though it can be cached in the buffer pool same as other pages. This property allows insert buffer to survive transaction commits and even MySQL restarts. Really it may take weeks before the given index page is merged, though usually it is much sooner than that.
