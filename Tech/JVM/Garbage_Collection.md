@@ -155,3 +155,7 @@ Tools:
 - http://www.azulsystems.com/products - Zing
 - http://www.azulsystems.com/jHiccup
 - https://github.com/bitcharmer/heaptrasher
+
+JRuby:
+
+`-Xmx500m -Xss1024k -Djruby.memory.max=500m -Djruby.stack.max=1024k –server -J-XX:+UseParallelGC –fast`
