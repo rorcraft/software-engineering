@@ -39,3 +39,13 @@ http://www.mysqlperformanceblog.com/2006/08/04/innodb-double-write/
 - then pages are written to their real location, fsync'd again.
 - inconsistent double write buffer is discarded.
 - inconsistent tablespace is recovered from double write buffer.
+
+## Group commit 
+
+![](http://knielsen-hq.org/maria/fix-group-commit-1.png)
+
+If we have several transactions running concurrently, all waiting to fsync their data in the commit step, we can use a single fsync() call to flush them all to physical storage in one go. 
+
+To fix the broken group commit - The basic idea is to only do fsync() for the binary log, not for the storage engine, corresponding to running with innodb_flush_log_at_trx_commit set to 2 or even 0.
+
+transactions can coordinate with each other to make sure they go into the engine in the order dictated by the queue, global transaction id, or ticket.
