@@ -159,3 +159,4 @@ Tools:
 JRuby:
 
 `-Xmx500m -Xss1024k -Djruby.memory.max=500m -Djruby.stack.max=1024k –server -J-XX:+UseParallelGC –fast`
+` -verbose:gc`
