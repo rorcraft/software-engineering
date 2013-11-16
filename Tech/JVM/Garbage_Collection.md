@@ -160,3 +160,7 @@ JRuby:
 
 `-Xmx500m -Xss1024k -Djruby.memory.max=500m -Djruby.stack.max=1024k –server -J-XX:+UseParallelGC –fast`
 ` -verbose:gc`
+```
+ruby -J-Xms500m -J-Xss1024k --server -J-verbose:gc -J-XX:+UseConcMarkSweepGC -J-XX:+UseParNewGC --fast -S bin/puma -e load_test -p 8080 -t 16:16
+ruby -J-Xms500m -J-Xss1024k --server -J-verbose:gc -J-XX:+UseG1GC -J-XX:+UnlockExperimentalVMOptions -J-XX:MaxGCPauseMillis=20 --fast -S bin/puma -e load_test -p 8080 -t 16:16
+```
