@@ -62,4 +62,5 @@ http://www.mysqlperformanceblog.com/2009/01/13/some-little-known-facts-about-inn
 
 ## Atomic commit
 
-http://sqlite.org/atomiccommit.html
+* http://sqlite.org/atomiccommit.html
+* http://www.slideshare.net/iammutex/what-every-data-programmer-needs-to-know-about-disks
