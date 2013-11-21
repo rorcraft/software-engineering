@@ -58,3 +58,8 @@ transactions can coordinate with each other to make sure they go into the engine
 http://www.mysqlperformanceblog.com/2009/01/13/some-little-known-facts-about-innodb-insert-buffer/
 
  Even though it is called “buffer” similar to “doublewrite buffer” it is really the space in the tablepace. Though it can be cached in the buffer pool same as other pages. This property allows insert buffer to survive transaction commits and even MySQL restarts. Really it may take weeks before the given index page is merged, though usually it is much sooner than that.
+
+
+## Atomic commit
+
+http://sqlite.org/atomiccommit.html
