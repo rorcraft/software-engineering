@@ -18,6 +18,7 @@
 * http://vimgolf.com
 * Sublime vintage mode.
 * https://github.com/lunixbochs/actualvim
+* Practical Vim - https://github.com/gitig/Practical-Vim-Notes 
 
 ## Modes
 
@@ -43,3 +44,10 @@ __Esc key timeout__
 * vimrc `set timeoutlen=1000 ttimeoutlen=0`
 * zsh # 10ms for key sequences `KEYTIMEOUT=1`
 * tmux `set -sg escape-time 0`
+
+__folding__
+```
+set foldmethod=syntax
+set nofoldable
+```
+
