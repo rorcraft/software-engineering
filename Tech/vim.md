@@ -33,6 +33,8 @@ WIP
 `:!`
 e.g. `:!rspec spec/model/user.rb`
 
+or `ctrl-z` to put vim in background, do your thing and `fg` to resume
+
 __Mac OS X__
 > If you have administrator privileges, you must fix an Apple-introduced problem in Mac OS X 10.5 Leopard by executing the following command, or BASH and Zsh will have the wrong PATH when executed non-interactively.
 
