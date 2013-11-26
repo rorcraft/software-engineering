@@ -14,6 +14,9 @@ http://michaelrbernste.in/2013/06/10/to-know-a-garbage-collector-goruco-2013.htm
 __Rare are GC Talks__
 http://furious-waterfall-55.heroku.com/ruby-guide/internals/gc.html
 
+__Boehm GC__:
+http://en.wikipedia.org/wiki/Boehm_garbage_collector
+
 __JVM GC__:
 http://www.oracle.com/technetwork/java/javase/gc-tuning-6-140523.html
 http://blog.mgm-tp.com/2013/03/garbage-collection-tuning/
