@@ -1,4 +1,5 @@
-http://www.cs.tau.ac.il/~shanir/concurrent-data-structures.pdf
+* http://www.cs.tau.ac.il/~shanir/concurrent-data-structures.pdf
+* http://www.ibm.com/developerworks/aix/library/au-multithreaded_structures1/index.html
 
 ### Issues
 
