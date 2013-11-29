@@ -31,12 +31,13 @@
   * `/` or `?` to search, `n` next , `shift+n` previous.
   * `shift+}` `shift+{` block
   * `%s/oldword/newworld/gc` - substitute, global, confirmation
-  * `i`, `a`, `I`, `A`
+  * `i`, `a`, `I`, `A`, `o`, `O`
   * `r` - replace
   * `ciw` change in word
   * `shift+h`, `shift+l`, `shift+m`, `zz`
 * Insert
   * `ctrl+n` autocomplete
+  * `ctrl+o` to goto normal mode for just one command
 * Command
 * Visual
   * `ctrl+v` block
