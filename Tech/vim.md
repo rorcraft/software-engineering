@@ -28,9 +28,19 @@
 ## Modes
 
 * Normal
+  * `/` or `?` to search, `n` next , `shift+n` previous.
+  * `shift+}` `shift+{` block
+  * `%s/oldword/newworld/gc` - substitute, global, confirmation
+  * `i`, `a`, `I`, `A`
+  * `r` - replace
+  * `ciw` change in word
 * Insert
+  * `ctrl+n` autocomplete
 * Command
 * Visual
+  * `ctrl+v` block
+  * `shift+v` line
+  * `viw ` word, `vap` paragraph
 
 ## Registers
 
@@ -46,9 +56,12 @@ Insert mode - `ctrl-r + # of register` to paste.
 
 * `:ls` - show buffers
 * `:b # of buffer` - go to buffer
-* `:copen` - Quickfix list
+* `:copen` - Quickfix list - syntax errors, search in project
 * `ctrl+o`, `ctrl+i` to jump between last jumps. `g,`, `g;` - change lists
 
+### Macro
+
+TBD
 
 ### Dispatch in background 
 
