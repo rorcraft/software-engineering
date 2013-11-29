@@ -34,6 +34,7 @@
   * `i`, `a`, `I`, `A`
   * `r` - replace
   * `ciw` change in word
+  * `shift+h`, `shift+l`, `shift+m`, `zz`
 * Insert
   * `ctrl+n` autocomplete
 * Command
