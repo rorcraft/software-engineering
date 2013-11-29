@@ -7,6 +7,11 @@
 * <leader> to trigger keys
 * grammar - `[register][num/range]<verb><motion|(i|a)<text object>>` e.g. 4fa, ciw, de
 * magic key - `.` (repeat last action)
+* `brew install vim` for system clipboard support.
+```  
+   $ vim --version | grep clipboard  
+   +clipboard  
+```
 
 ## Resources for learning.
 
@@ -22,11 +27,28 @@
 
 ## Modes
 
-WIP
+* Normal
+* Insert
+* Command
+* Visual
 
 ## Registers
 
-WIP
+`:reg` - lists all registers
+
+`"0p` - to paste from `0` register
+
+`set clipboard=unnamed` - yank and paste with the system clipboard
+
+Insert mode - `ctrl-r + # of register` to paste.
+
+## Buffers
+
+* `:ls` - show buffers
+* `:b # of buffer` - go to buffer
+* `:copen` - Quickfix list
+* `ctrl+o`, `ctrl+i` to jump between last jumps. `g,`, `g;` - change lists
+
 
 ### Dispatch in background 
 
