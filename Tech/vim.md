@@ -24,6 +24,7 @@
 * Sublime vintage mode.
 * https://github.com/lunixbochs/actualvim
 * Practical Vim - https://github.com/gitig/Practical-Vim-Notes 
+* https://learn.thoughtbot.com/vim
 
 ## Modes
 
@@ -60,6 +61,12 @@ Insert mode - `ctrl-r + # of register` to paste.
 * `:b # of buffer` - go to buffer
 * `:copen` - Quickfix list - syntax errors, search in project
 * `ctrl+o`, `ctrl+i` to jump between last jumps. `g,`, `g;` - change lists
+
+## Ctags
+
+* `ctrl+]` - jump into tag, `ctrl+o` to jump back
+* `brew install ctags`, `ctags -R`, `gem install gem-ctags`, `gem ctags` - generate ctags for all gems
+* `tpope/vim-bundler` - will be aware of all tags from all gems in bundle.
 
 ### Macro
 
