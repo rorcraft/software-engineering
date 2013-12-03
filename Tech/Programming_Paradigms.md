@@ -1,3 +1,5 @@
+http://www.info.ucl.ac.be/~pvr/VanRoyChapter.pdf
+
 ### Concepts -> Paradigms -> Languages 
 
 * The concepts are the basic primitive elements used to construct the paradigms.
@@ -33,5 +35,15 @@ If the need for pervasive modifications manifests itself, we can take this as a 
 Many languages support two paradigms, typically one for programming in the small, another for programming in the large (abstraction and modularity).
 
 a closure combines a procedure with its external references (the references it uses at its definition)
+
+### Determinism in concurrent language
+
+__Declarative concurrency__ (monotonic dataflow) - deterministic inputs are received. 
+
+__Functional reactive programming__ (continuous synchronous programming) is similar to nonmonotonic dataflow but without the glitches. deteministic output while accepts nondeterministic input.
+
+__Discrete synchronous programming__ discrete instead of continuous: time advances in steps from one input event to the next. Output events are emitted at the same logical time ￼instantsastheinputevents.
+
+
 
 
