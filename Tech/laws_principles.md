@@ -35,3 +35,10 @@ __[Murphys Law](http://en.wikipedia.org/wiki/Murphy%27s_law)__
 
 * Whatever can go wrong, will go wrong
 
+__Little's Law__
+
+* Little's Law tells us that the average number of customers in the store L, is the effective arrival rate λ, times the average time that a customer spends in the store W, or simply:  
+```
+L =  λW
+```
+
