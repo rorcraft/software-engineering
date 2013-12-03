@@ -28,4 +28,10 @@ Gaurded command programming                 concurrent logic programming
               Message-passing and shared state concurrency
 ```
 
+If the need for pervasive modifications manifests itself, we can take this as a sign that there is a new concept waiting to be discovered. (programs become complicated for reasons that have no direct relationship to the specific problem)
+
+Many languages support two paradigms, typically one for programming in the small, another for programming in the large (abstraction and modularity).
+
+a closure combines a procedure with its external references (the references it uses at its definition)
+
 
