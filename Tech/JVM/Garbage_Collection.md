@@ -2,6 +2,7 @@ __Intro__
 
 - http://www.slideshare.net/waterfox1/an-introduction-to-jvm-internals-and-garbage-collection-in-java
 - http://sureshsvn.com/jvm.html
+- http://www.jclarity.com/2013/12/11/poorly-chosen-java-hotspot-garbage-collection-flags-and-how-to-fix-them/
 
 ![](http://sureshsvn.com/jvm.png)
 
