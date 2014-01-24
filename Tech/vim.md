@@ -25,6 +25,7 @@
 * https://github.com/lunixbochs/actualvim
 * Practical Vim - https://github.com/gitig/Practical-Vim-Notes 
 * https://learn.thoughtbot.com/vim
+* https://github.com/Gonzih/vim-keymap
 
 ## Modes
 
@@ -70,7 +71,7 @@ Insert mode - `ctrl-r + # of register` to paste.
 
 ### Macro
 
-TBD
+TBA
 
 ### Dispatch in background 
 
