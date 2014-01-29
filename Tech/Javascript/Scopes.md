@@ -33,3 +33,10 @@ outer();
 // 123
 // undefined
 ```
+
+### Invocations
+
+* As a function, in which the function is invoked in a straightforward manner
+* As a method, which ties the invocation to an object, enabling object-oriented programming
+* As a constructor, in which a new object is brought into being
+* Via its apply() or call() methods, which is kind of complicated, so we’ll cover that when we get to it
