@@ -141,3 +141,11 @@ myFn = null;
 console.log(myFn2(5));
 //called-called-called-called-called-
 ```
+
+### Robust check function client side
+
+```javascript
+function isFunction(fn) {
+  return Object.prototype.toString.call(fn) === "[object Function]";
+}
+```
