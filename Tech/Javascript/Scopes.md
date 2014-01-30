@@ -81,3 +81,39 @@ outer.call(this, null);
 // 123
 // undefined
 ```
+
+### Caveats of using `var`
+
+```javascript
+var assert = require('assert');
+
+var object = {
+  x: 123,
+  puts: function() {
+    console.log(this.x);
+  }
+}
+object.puts();
+// 123
+
+function wrappedBindedPuts() {
+  var puts = object.puts.bind(this);
+  puts();
+}
+wrappedBindedPuts.call(object);
+// 123
+
+function thisPuts() {
+  this.puts();
+}
+thisPuts.call(object);
+// 123
+
+function wrappedPuts() {
+  var puts = object.puts; // var puts is in a different scope not attached to `this`
+  assert(this.x === 123);
+  puts();
+}
+wrappedPuts.call(object);
+// undefined
+```
