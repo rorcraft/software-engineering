@@ -120,7 +120,7 @@ wrappedPuts.call(object);
 
 ### Recursive functions
 
-```
+```javascript
 // named functions are available to the inside scope of the function
 var assert = require('assert');
 
@@ -133,9 +133,11 @@ var myFn = function fn(i) {
 }
 
 console.log(myFn(5));
+//called-called-called-called-called-
 assert(typeof fn === "undefined");
 
 var myFn2 = myFn;
 myFn = null;
 console.log(myFn2(5));
+//called-called-called-called-called-
 ```
