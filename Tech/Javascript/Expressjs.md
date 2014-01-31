@@ -1,7 +1,7 @@
 ### Express 
 A web framework built on `connect` middleware framework.
 
-`express = require(`express`); express();`
+`express = require('express'); express();`
 under the hood
 `createApplication()`
 * extends `connect` with `application`
@@ -16,8 +16,21 @@ under the hood
 * wire up view template `app.engine('jade', require('jade').__express)`
 * `app.param = function(name, fn)` - middleware to process param and load data into request.
 * `app.set`, `app.get` - set/get in `settings` key value store.
-* `app.render`
+* `app.render = function(name, options, fn)` - gets the view by name `view.render(options, fn)`
 
+`request` - abstractions for HTTP request
+- `req.get('Content-Type') // "text/plain"`
+- `req.accepts('image/png') // undefined if not accepted`
+- `acceptsCharset`, `acceptsLanguage` ... `range`, `param`, `is`, `secure`, `ip`, `host` etc
+
+`response` - abstractions for HTTP response
+- `status`, `links`
+- `res.send = function(body)` - sets content-type, content-length, calls `end`
+- `json` - call `send` with json as string.
+- `sendfile` - streams and callbacks on done, `download` - wrapper of `sendfile`
+- `res.format = function(obj)` - response to first accepts from request.
+- `header`, `attachment`, `cookie`, `location`, `redirect`
+- `res.render = function(view, options, fn)` - calls `app.render` with merged locals.
 
 ### Connect
 A http handler framework with middleware API and prebuilt handlers such as - cookieParser, csrf, query etc under `/middleware`
@@ -30,13 +43,4 @@ http://www.senchalabs.org/connect/
 `app.handle = function(req, res, out)`
 * sets up `req` and `path`, execute matching middleware stack by calling next()
 * inner function `function next(err)` - calls next handler in the stack or return out
-
-
-merge
-mixin
-proto
-Route
-Router
-req
-res
    
