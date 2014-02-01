@@ -17,6 +17,7 @@ under the hood
 * `app.param = function(name, fn)` - middleware to process param and load data into request.
 * `app.set`, `app.get` - set/get in `settings` key value store.
 * `app.render = function(name, options, fn)` - gets the view by name `view.render(options, fn)`
+* `this._router[method].apply(this._router, arguments)` - loop through the methods and store the callbacks as instances of Route.
 
 `request` - abstractions for HTTP request
 - `req.get('Content-Type') // "text/plain"`
@@ -31,6 +32,14 @@ under the hood
 - `res.format = function(obj)` - response to first accepts from request.
 - `header`, `attachment`, `cookie`, `location`, `redirect`
 - `res.render = function(view, options, fn)` - calls `app.render` with merged locals.
+
+`view` - lightweight wrapper on top templateEngines
+- `lookup = function(path)` => `if (exists(path)) return path;`
+- `render = function(options, fn)` => `this.engine(this.path, options, fn)`, options = template locals
+ 
+`router` - manage routes like `.route`, `.match`
+- `dispatch` - invoke route's callbacks
+- Route - object storing { path:, callback: }
 
 ### Connect
 A http handler framework with middleware API and prebuilt handlers such as - cookieParser, csrf, query etc under `/middleware`
