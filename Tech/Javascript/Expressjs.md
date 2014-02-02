@@ -15,7 +15,8 @@ under the hood
 * Router
 * wire up view template `app.engine('jade', require('jade').__express)`
 * `app.param = function(name, fn)` - middleware to process param and load data into request.
-* `app.set`, `app.get` - set/get in `settings` key value store.
+* `app.set`, - also acts as get really when arg is 1, key/value store in `settings`
+* `app.get .. all http methods` - dynamically defined to attach handlers into `router[method]`
 * `app.render = function(name, options, fn)` - gets the view by name `view.render(options, fn)`
 * `this._router[method].apply(this._router, arguments)` - loop through the methods and store the callbacks as instances of Route.
 
