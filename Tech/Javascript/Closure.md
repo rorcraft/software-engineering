@@ -21,3 +21,5 @@ later();
 // ninja
 // samurai
 ```
+
+### Immediate function (TODO)
