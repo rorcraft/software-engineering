@@ -42,7 +42,20 @@ Shared:
 * `_retrieve` - wrap specs into batchedRequests and calls `async.parallel`. For each spec - if !readFromCache, `fetchFromApi`, else look at cache, if needsfetch, `fetchFromAPI` and caches data. (server defaults !readFromCache, client defaults readFromCache)
 * `_retrieveModel` - wraps `_retrieveModelData` callback with data from `fetcher.modelStore`, `_retrieveModelData` - returns model or fetchFromApi.
 * `fetchFromApi` - calls model/collection.fetch with data, success and error callbacks. (model/collection.fetch is a Backbone method)
-* `fetch` - trigger `fetch:start`, calls `_retrieve`. This is called by View as it renders, the callback will combine the fetchedData with template.
+* `fetch` - trigger `fetch:start`, calls `_retrieve`. This is called by controllers.  
+```
+  index: function(params, callback) {
+    this.app.set('title', 'Repos');
+
+    var spec = {
+      collection: {collection: 'Repos', params: params}
+    };
+    this.app.fetch(spec, function(err, result) {
+      callback(err, result);
+    });
+  },
+```
+the callback will combine the fetchedData with template.
 
 `model` 
 * extends `Backbone.Model`, `syncer`
@@ -70,6 +83,51 @@ Shared:
 * `getTemplate` - delegates to `templateAdapter`
 * `getInnerHtml`, `getHtml` - renders template with data and add html attributes.
 * `render` - attach html to dom and calls `_postRender` 
+
+All Together:
+```
+// high level psuedo code:
+controller {
+  action: function(params, callback)  {
+    var spec = {
+      collection: {collection: 'Repos', params: params}
+    };
+    this.app.fetch(spec, function(err, result) {
+      callback(err, result);
+    });
+  }
+}
+
+// buildRoutes
+Router.route('controller/action') {
+  handler = function(req, res) { /* wraps action() with viewData */ }
+  routes.push(['controller/action', Route, handler])
+}
+
+express.use(function(req, res, next) {
+  // app middleware to attach app to req
+  // express matches 'controller/action', calls handler
+  handler(req, res) {
+     context = { route, app, redirectTo() }
+     context.action(params, fetch_callback(err, viewPath, locals) {
+        // this.app.fetch(spec, function(err, result))
+          fetch_callback(err, result) {
+            // res.render(viewPath, viewData, function(err, html) {})
+            ViewEngine.render(viewPath, viewData, callback(err, html) {}) {
+              layoutData = { body, appData, bootstrappedData, _app }
+              body = new View(locals).getHtml();
+              html = templateFn(layoutData)
+              // callback(err, html) 
+              {
+                res.end(html);
+              }
+            }
+          }
+        }
+     }
+  }
+} 
+```
 
 Client side:
 
