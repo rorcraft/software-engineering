@@ -71,6 +71,7 @@ ninja3.gender
 Ninja.prototype.gender = 'Ninja' // this will be looked up first
 ninja3.gender
 > 'Ninja'
+```
 
 `constructor.prototype.constructor` is a circular reference
 
