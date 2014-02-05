@@ -43,7 +43,7 @@ Shared:
 * `_retrieveModel` - wraps `_retrieveModelData` callback with data from `fetcher.modelStore`, `_retrieveModelData` - returns model or fetchFromApi.
 * `fetchFromApi` - calls model/collection.fetch with data, success and error callbacks. (model/collection.fetch is a Backbone method)
 * `fetch` - trigger `fetch:start`, calls `_retrieve`. This is called by controllers.  
-```
+```javascript
   index: function(params, callback) {
     this.app.set('title', 'Repos');
 
@@ -85,7 +85,7 @@ the callback will combine the fetchedData with template.
 * `render` - attach html to dom and calls `_postRender` 
 
 All Together:
-```
+```javascript
 // high level psuedo code:
 controller {
   action: function(params, callback)  {
