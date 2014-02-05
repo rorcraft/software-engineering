@@ -72,7 +72,41 @@ Ninja.prototype.gender = 'Ninja' // this will be looked up first
 ninja3.gender
 > 'Ninja'
 
+`constructor.prototype.constructor` is a circular reference
+
+https://stackoverflow.com/questions/650764/how-does-proto-differ-from-constructor-prototype
+
+```javascript
+function Ninja() {}
+ninja = new Ninja()
+ninja.constructor
+> [Function: Ninja]
+ninja.constructor.prototype
+> {}
+ninja.constructor.prototype.constructor
+> [Function: Ninja]
+
 ```
 
-`__proto__`
+`__proto__` - refers directly to the prototype of the constructor of the instance of the object.
 
+```javascript
+ninja.__proto__ // constructor.prototype
+> {}
+ninja.__proto__.constructor
+> [Function: Ninja]
+ninja.__proto__.constructor.__proto__
+> [Function: Empty]
+ninja.__proto__.constructor.__proto__.__proto__
+> {}
+ninja.__proto__.constructor.__proto__.__proto__.__proto__
+> null
+ninja.__proto__.__proto__
+> {} // .constructor == Object
+ninja.__proto__.__proto__.__proto__
+> null
+ninja.__proto__.constructor.__proto__.constructor
+> [Function: Function]
+ninja.__proto__.constructor.__proto__.constructor.__proto__
+> [Function: Empty]
+```
