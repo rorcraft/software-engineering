@@ -22,4 +22,35 @@ later();
 // samurai
 ```
 
-### Immediate function (TODO)
+### Immediate function 
+
+```javascript
+var keepcount = (function() {
+  var private = 0;
+  
+  var increment = function() {
+    return ++private;
+  }
+  
+  return {
+    increment: increment
+  };
+})()
+
+keepcount.increment();
+> 1
+keepcount.increment();
+> 2
+
+// cannot directly access private.
+```
+
+jQuery plugins can also use this.
+
+```javascript
+var plugin = (function($) {
+  // $ doesn't need to interfere with global scope
+  return $('.plugin').html();
+})(jQuery)
+```
+
