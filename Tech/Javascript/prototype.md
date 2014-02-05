@@ -42,19 +42,36 @@ function Female() {
 function Secret() {}
 Secret.prototype.gender = 'Secret';
 
-function Ninja() {}
+function Ninja() {
+  this.ninjaInstance = true
+}
+Ninja.prototype.ninjaProto = true
 
 ninja = new Ninja();
 Ninja.prototype = new Male(); // prototype.constructor = Male
 ninja.gender
 > undefined // cannot change super once instantiated.
+ninja instanceof Ninja
+> true
+ninja instanceof Male
+> false
 ninja1 = new Ninja();
 ninja1.gender
 > 'Male'
-Ninja.prototype = new Female();
+ninja1 instanceof Ninja
+> true
+ninja1 instanceof Male
+> true
+
+Ninja.prototype = new Female(); 
 ninja2 = new Ninja();
 ninja2.gender
 > 'Female'
+// Ninja.prototype's properties are lost.
+ninja2.ninjaProto
+> undefined
+ninja2.ninjaInstance
+> true
 
 'gender' in ninja // inherited property
 > true
