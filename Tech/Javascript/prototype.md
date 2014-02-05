@@ -39,6 +39,9 @@ function Male() {
 function Female() {
   this.gender = 'Female';
 }
+function Secret() {}
+Secret.prototype.gender = 'Secret';
+
 function Ninja() {}
 
 ninja = new Ninja();
@@ -49,7 +52,7 @@ ninja1 = new Ninja();
 ninja1.gender
 > 'Male'
 Ninja.prototype = new Female();
-ninja2 = new Ninja(0;
+ninja2 = new Ninja();
 ninja2.gender
 > 'Female'
 
@@ -60,6 +63,15 @@ ninja.hasOwnProperty('gender')
 ninja.gender = 'Secret'
 ninja.hasOwnProperty('gender')
 > true
+
+ninja3 = new Ninja();
+ninja3.gender
+> 'Secret'
+
+Ninja.prototype.gender = 'Ninja' // this will be looked up first
+ninja3.gender
+> 'Ninja'
+
 ```
 
 `__proto__`
