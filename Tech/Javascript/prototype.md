@@ -111,3 +111,20 @@ ninja.__proto__.constructor.__proto__.constructor
 ninja.__proto__.constructor.__proto__.constructor.__proto__
 > [Function: Empty]
 ```
+
+```javascript
+function Ninja() {}
+Ninja.prototype.sword = true;
+function Human() {}
+Human.prototype.human = true;
+ninja = new Ninja();
+ninja.human
+> undefined
+ninja.sword
+> true
+Ninja.prototype.__proto__ = Human.prototype;
+ninja.human
+> true
+ninja.sword
+> true
+```
