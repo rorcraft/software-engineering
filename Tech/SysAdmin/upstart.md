@@ -23,3 +23,20 @@ post-stop script
     kill -2 `cat /data/my_service/shared/pids/puma.pid`
 end script
 ```
+
+__Commands:__
+
+`/sbin/init`
+
+`/sbin/start job_name`
+
+`/sbin/stop job_name`
+
+`/sbin/status job_name`
+
+---------
+
+`/etc/init.d` System V init tools (SysVinit).
+It contains the `init` program (the first process that is run when the kernel has finished initializing¹) as well as some infrastructure to start and stop services and configure them
+
+Files in the directory are shell scripts that respond to start, stop, restart.
