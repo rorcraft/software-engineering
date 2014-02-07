@@ -101,15 +101,27 @@ controller {
 // buildRoutes
 Router.route('controller/action') {
   handler = function(req, res) { /* wraps action() with viewData */ }
-  routes.push(['controller/action', Route, handler])
+  routes.push(['controller/action', Route, handler]) 
 }
 
-express.use(function(req, res, next) {
-  // app middleware to attach app to req
-  // express matches 'controller/action', calls handler
-  handler(req, res) {
-     context = { route, app, redirectTo() }
-     context.action(params, fetch_callback(err, viewPath, locals) {
+
+// server/server
+this.handle
+  this.configure // lazy configure
+    this.expressApp.use // overwrite res.end middleware
+    this.expressApp.use // attach req.rendrApp + appData, apiPath, entryPath, modelUtils
+    // add custom middleware
+    this.expressApp.use // apiPath, apiProxy
+    buildRoutes // attach wrappedhandler to expressApp
+      // for each controller/action, wrap action into wrapperHandler
+      // builds an array of [pattern, route, wrappedhandler]
+      // for each route
+        this.expressApp.get(pattern, wrappedHandler)
+    this.expressApp.use // errorHandler
+  this.expressApp.handle // normal handle that calls a Router wrapped handler. 
+    handler(req, res) {
+      context = { route, app, redirectTo() }
+      context.action(params, fetch_callback(err, viewPath, locals) {
         // this.app.fetch(spec, function(err, result))
           fetch_callback(err, result) {
             // res.render(viewPath, viewData, function(err, html) {})
@@ -118,15 +130,8 @@ express.use(function(req, res, next) {
               body = new View(locals).getHtml();
               html = templateFn(layoutData)
               // callback(err, html) 
-              {
                 res.end(html);
-              }
-            }
-          }
-        }
-     }
-  }
-} 
+            
 ```
 
 Client side:
