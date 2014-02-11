@@ -3,7 +3,8 @@ DOM level 2 Event model
 * `addEventListener`, `removeEventListener`
 * if IE<=8 `attachEvent`, `detachEvent`
 
-Events propagate from event target up to the root of the DOM during the _bubble phase_ and then they traverse down the tree back to the target during the _capture phase_.
+Events first are captured down to deepest target, then bubble up. In IE<9 they only bubble.
+There are events which don’t bubble, but can be captured. For example, `onfocus/onblur`.
 
 IE doesn't pass context the function.
 ```javascript
