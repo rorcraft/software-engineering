@@ -1,5 +1,7 @@
 ### Prototype
 
+http://dmitrysoshnikov.com/ecmascript/javascript-the-core/
+
 ```javascript
 function Ninja() {
   this.swung = false
