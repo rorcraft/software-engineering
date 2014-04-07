@@ -1,3 +1,15 @@
+### Good vs Bad
+
+> The difference between a bad programmer and a good programmer is understanding. That is, bad programmers don't understand what they are doing, and good programmers do.
+
+Code Simplicity: The Science of Software Development by Max Kanat-Alexander
+
+> Bad programmers worry about the code. Good programmers worry about data structures and their relationships.
+
+Linus Torvald
+
+### Terrible Programmers
+
 http://www.aaronstannard.com/post/2013/12/19/The-Taxonomy-of-Terrible-Programmers.aspx
 
 The Pet Technologist
