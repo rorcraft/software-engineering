@@ -4,6 +4,8 @@
 
 **Single responsibility principle**
 an object should have only a single responsibility.
+> small enough to lower coupling, but
+> large enough to maximize cohesion.
 
 **Open/closed principle**
 “software entities … should be open for extension, but closed for modification”.
