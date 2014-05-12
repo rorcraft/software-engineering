@@ -6,22 +6,18 @@
 
 ### Dynamic Sizing
 
-TBA
+* http://openmymind.net/Back-To-Basics-Hashtables/
+* http://openmymind.net/Back-To-Basics-Hasthables-Part-2/
+* https://github.com/antirez/redis/blob/unstable/src/dict.c
 
-__Distributed Hash Table__
+__Redis__ 
 
-http://engineering.bittorrent.com/2013/01/22/bittorrent-tech-talks-dht/
+Redis incrementally does a rehash. How? First it starts the same way by doubling the number of buckets. Instead of moving all elements over, it simply marks the hashtable as being in a "rehashing mode". As long as the the hashtable is in "rehashing mode" two sets of buckets exist, the old and the twice-larger new one.
 
-__Redis__
+This means that hashtables which see a lot of activity get quickly rehashed, while hashtables which see little activity don't take up as much precious cycles. Eventually, when all the buckets are moved over, the old set of buckets can be deleted and the hashtable is no longer in "rehashing mode".
 
-* http://stackoverflow.com/questions/10004565/redis-10x-more-memory-usage-than-data
-* http://redis.io/topics/memory-optimization
+Every method needs to be aware of the rehashing state of the table.
 
-```
-# Hashes are encoded in a special way (much more memory efficient) when they
-# have at max a given number of elements, and the biggest element does not
-# exceed a given threshold. You can configure this limits with the following
-# configuration directives.
-hash-max-zipmap-entries 512
-hash-max-zipmap-value 64
-```
+### Cuckoo Hash Table
+
+* http://da-data.blogspot.com/2013/03/optimistic-cuckoo-hashing-for.html
