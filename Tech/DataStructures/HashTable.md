@@ -1,11 +1,11 @@
 ### Hash functions
 
-* Numeric Recipes http://www.nr.com/aboutNR3book.html
+* Numeric Recipes - http://www.nr.com/aboutNR3book.html
 * http://www.azillionmonkeys.com/qed/hash.html
 * http://burtleburtle.net/bob/hash/spooky.html
-* Murmur
-* CityHash
-* SipHash
+* Murmur - https://en.wikipedia.org/wiki/MurmurHash
+* CityHash - (Google) https://en.wikipedia.org/wiki/CityHash,  *has not been tested much on big-endian platforms.
+* SipHash - (2012) https://en.wikipedia.org/wiki/SipHash,  64-bit message, 128-bit secret key.
 
 ### Collision resolution
 
