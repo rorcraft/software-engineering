@@ -1,8 +1,28 @@
 ### Hash functions
 
+* Numeric Recipes http://www.nr.com/aboutNR3book.html
+* http://www.azillionmonkeys.com/qed/hash.html
+* http://burtleburtle.net/bob/hash/spooky.html
 * Murmur
 * CityHash
 * SipHash
+
+### Collision resolution
+
+__Separate Chaining__
+
+* advantages:
+  * The table has no hard size limit.
+  * Performance degrades gracefully with more collisions.
+  * The table easily handles duplicate keys.
+  * Deletion is simple and permanent.
+* disadvantages:
+  * Rebuilding the table if it is resized is slightly harder.
+  * Potentially more memory is used because of the links.
+  * Potentially slower because links need to be dereferenced.
+
+__Linear Probing__
+
 
 ### Dynamic Sizing
 
