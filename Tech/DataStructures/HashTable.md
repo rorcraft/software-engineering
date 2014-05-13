@@ -9,6 +9,8 @@
 
 ### Collision resolution
 
+http://eternallyconfuzzled.com/tuts/datastructures/jsw_tut_hashtable.aspx
+
 __Separate Chaining__
 
 * advantages:
@@ -23,14 +25,21 @@ __Separate Chaining__
 
 __Linear Probing__
 
+The step size is almost always 1 with linear probing, but it is acceptable to use other step sizes as long as the step size is relatively prime to the table size so that every index is eventually visited.  
+Keys tend to cluster. That is, several parts of the table may become full quickly while others remain completely empty.
+__Quadratic probing__ Simply start with a step size of 1 and quadratically increase the step size until the desired index is found. Alleviates primary clustering because probes are no longer close together according to some small constant.
+
+__Double hashing__  The first hash function is used as usual, and the second hash function is used to create a step size. Because the key itself determines the step size, primary clustering is avoided.
+
+__Cuckoo Hash__ Using two hash function.
+* http://da-data.blogspot.com/2013/03/optimistic-cuckoo-hashing-for.html
 
 ### Dynamic Sizing
 
 * http://openmymind.net/Back-To-Basics-Hashtables/
-* http://openmymind.net/Back-To-Basics-Hasthables-Part-2/
-* https://github.com/antirez/redis/blob/unstable/src/dict.c
+* http://openmymind.net/Back-To-Basics-Hasthables-Part-2/ 
 
-__Redis__ 
+__Redis__ https://github.com/antirez/redis/blob/unstable/src/dict.c
 
 Redis incrementally does a rehash. How? First it starts the same way by doubling the number of buckets. Instead of moving all elements over, it simply marks the hashtable as being in a "rehashing mode". As long as the the hashtable is in "rehashing mode" two sets of buckets exist, the old and the twice-larger new one.
 
@@ -38,6 +47,31 @@ This means that hashtables which see a lot of activity get quickly rehashed, whi
 
 Every method needs to be aware of the rehashing state of the table.
 
-### Cuckoo Hash Table
-
-* http://da-data.blogspot.com/2013/03/optimistic-cuckoo-hashing-for.html
+__Golang Hashmap__ http://golang.org/src/pkg/runtime/hashmap.c
+```
+// This file contains the implementation of Go's map type.
+//
+// The map is just a hash table.  The data is arranged
+// into an array of buckets.  Each bucket contains up to
+// 8 key/value pairs.  The low-order bits of the hash are
+// used to select a bucket.  Each bucket contains a few
+// high-order bits of each hash to distinguish the entries
+// within a single bucket.
+//
+// If more than 8 keys hash to a bucket, we chain on
+// extra buckets.
+//
+// When the hashtable grows, we allocate a new array
+// of buckets twice as big.  Buckets are incrementally
+// copied from the old bucket array to the new bucket array.
+//
+// Map iterators walk through the array of buckets and
+// return the keys in walk order (bucket #, then overflow
+// chain order, then bucket index).  To maintain iteration
+// semantics, we never move keys within their bucket (if
+// we did, keys might be returned 0 or 2 times).  When
+// growing the table, iterators remain iterating through the
+// old table and must check the new table if the bucket
+// they are iterating through has been moved ("evacuated")
+// to the new table.
+```
