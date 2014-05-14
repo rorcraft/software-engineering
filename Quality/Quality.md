@@ -35,9 +35,28 @@ http://dandemeyere.com/blog/5-most-inspiring-steve-jobs-stories
 
 ### Qualities of Quality
 
-http://labs.spotify.com/2014/04/11/qualities-of-quality/
+http://labs.spotify.com/2014/04/11/qualities-of-quality/ 
+
+> Developer-facing quality is a completely different thing from end-user facing quality, and is usually more important.
 
 ![](http://spotifylabscom.files.wordpress.com/2014/04/kindsofquality.png?w=584)
 
 http://martinfowler.com/bliki/DesignStaminaHypothesis.html
 
+![](http://martinfowler.com/bliki/images/designStaminaGraph.gif)
+
+Technical Debt https://www.youtube.com/watch?v=pqeJFYwnkjE
+
+You can only profitably trade off implementation quality for speed in very short-lived projects. Probably, if you’re expecting a system to have a lifespan of more than a couple of weeks, it’s a good idea to pay attention to implementation quality right from the start.
+
+http://tech.shopzilla.com/2009/11/the-cost-of-a-feature/
+* Finished features lead to development cost even if you don’t touch them. 
+* Not just in operating or maintaining that feature, but in development of other features.
+  * Slower decision-making/added communication due to the larger amount of things to know and think about, both when defining features and implementing them. In the same vein, increased likelihood of mistakes in feature specifications or implementations due to the complexity of feature interaction.
+  * Slower implementation of new features due to the additional complexity of the system. It is harder to figure out the right way to fit things together if there are many of them.
+  * Regression testing costs that increase with every added feature.
+
+Bugs reduce productivity in many ways: http://pettermahlen.com/2011/04/08/if-its-broken-fix-it/
+The short of it is that unfixed bugs in your code lead to additional meetings, bug management overhead, duplicate reports of the same bug and context switching. So a lot of the time, the best thing you can do for your own productivity is to just fix pretty much everything that’s ever reported.
+
+One common misconception about quality and its impact on delivery speed is that things like pluggability/extensibility/configurability of some technical solution are quality. Those are things often labelled as over-engineering. To me, over-engineering is engineers adding waste by inventing features that aren’t actually really needed.
