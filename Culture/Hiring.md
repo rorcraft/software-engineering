@@ -22,3 +22,7 @@ No. 5: Being small can be your secret weapon
 No. 6: It's the work, stupid
 
 No. 7: Open source tips the balance
+
+### Hiring Process
+
+http://labs.spotify.com/2014/04/01/how-we-do-recruitment-at-spotify/
