@@ -32,3 +32,12 @@ https://medium.com/the-year-of-the-looking-glass/bcddf7c85553
 > Building something that demonstrates craft at the highest level cannot be reasoned into. It happens because of love, and because there was an environment that nurtured that love.
 
 http://dandemeyere.com/blog/5-most-inspiring-steve-jobs-stories
+
+### Qualities of Quality
+
+http://labs.spotify.com/2014/04/11/qualities-of-quality/
+
+![](http://spotifylabscom.files.wordpress.com/2014/04/kindsofquality.png?w=584)
+
+http://martinfowler.com/bliki/DesignStaminaHypothesis.html
+
