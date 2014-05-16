@@ -16,3 +16,11 @@ Some things I believe: [Coda Hale](http://codahale.com/about.html)
 Mornings require some Sightglass coffee.
 * The internal components of your software should exhibit the same grace and utility as the external components–looking under the hood should be delightful, not horrifying.
 * Bicycles should come stock with fenders, racks, lights, and nice fat tires.
+
+__Trying to change company culture is a fool’s errand__
+
+https://medium.com/@SamiHonkonen/6cc49a591515
+* A simple example of a system condition is lighting.
+* Bonus systems are a strong culture generator. 
+* Open offices enhance communication, but decrease concentration. It’s a choice we have to make and hopefully we do it while cognizant of its effects on company culture.
+* All company policies and organizational structures are system conditions that act as culture generators. They are the recipe. To change company culture, we must change the system conditions.
