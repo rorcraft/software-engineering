@@ -1,6 +1,14 @@
-https://docs.oracle.com/javase/tutorial/essential/regex/quant.html
+### Implementations:
+
+* https://github.com/k-takata/Onigmo
+
+### Avoid backtracking:
+
+* http://www.regular-expressions.info/catastrophic.html
+* http://blog.codinghorror.com/regex-performance/
 
 ### Quantifiers
+https://docs.oracle.com/javase/tutorial/essential/regex/quant.html
 
 Quantifiers allow you to specify the number of occurrences to match against. 
 
