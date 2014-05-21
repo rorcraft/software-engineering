@@ -1,5 +1,9 @@
 * http://www.cs.tau.ac.il/~shanir/concurrent-data-structures.pdf
 * http://www.ibm.com/developerworks/aix/library/au-multithreaded_structures1/index.html
+* http://www.liblfds.org/ written in C
+* http://sysmagazine.com/posts/196834/ libcds
+* http://kukuruku.co/hub/cpp/lock-free-data-structures-introduction
+* http://kukuruku.co/hub/cpp/lock-free-data-structures-basics-atomicity-and-atomic-primitives
 
 ### Issues
 
