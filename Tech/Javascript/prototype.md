@@ -1,6 +1,7 @@
 ### Prototype
 
-http://dmitrysoshnikov.com/ecmascript/javascript-the-core/
+* http://dmitrysoshnikov.com/ecmascript/javascript-the-core/
+* http://www.crockford.com/javascript/inheritance.html
 
 ```javascript
 function Ninja() {
