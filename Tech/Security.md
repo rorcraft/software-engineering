@@ -1,3 +1,5 @@
+* http://blog.codeclimate.com/blog/2013/03/27/rails-insecure-defaults/
+
 __HSTS header__
 https://gist.github.com/bartekn/6924685
 
