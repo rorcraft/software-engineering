@@ -1,7 +1,6 @@
 ### Prototype
 
 * http://dmitrysoshnikov.com/ecmascript/javascript-the-core/
-* http://www.crockford.com/javascript/inheritance.html
 
 ```javascript
 function Ninja() {
@@ -147,4 +146,53 @@ ninja.human
 > true
 ninja.sword
 > true
+```
+
+### Inheritance
+
+* http://www.crockford.com/javascript/inheritance.html
+
+```javascript
+function Human() {}
+Human.prototype.human = true;
+
+function Ninja() {};
+Ninja.prototype = new Human();
+Ninja.prototype.sword = true;
+
+ninja = new Ninja();
+ninja.sword;
+> true
+ninja.constructor
+> [Function Human]
+
+```
+
+__Parasitic Combination Inheritance__
+
+```javascript
+function obj(o) {
+  function F() {}
+  F.prototype = o;
+  return new F();
+}
+ 
+function inheritPrototype(sub, sup) {
+  var p = obj(sup.prototype);
+  p.constructor = sub;
+  sub.prototype = p;
+}
+
+function Human() {}
+Human.prototype.human = true;
+
+function Ninja() {};
+inheritPrototype(Ninja, Human);
+Ninja.prototype.sword = true;
+
+ninja = new Ninja();
+ninja.sword;
+> true
+ninja.constructor
+> [Function Ninja]
 ```
