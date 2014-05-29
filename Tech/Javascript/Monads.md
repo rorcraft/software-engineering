@@ -56,4 +56,21 @@ must also implement Apply spec
 1. `a.of(f).ap(a.of(x))` is equivalent to `a.of(f(x))` (homomorphism)
 1. `u.ap(a.of(y))` is equivalent to `a.of(function (f) { return f(y); }).ap(u)` (interchange)
 
- 
+### Chain
+
+must provide a `chain` method  
+must also implement Apply spec
+
+`m.chain(f)`
+
+1. Apply's `ap`; derivable as `m.chain(function (f) { return m.map(f) })`
+2. `m.chain(f).chain(g)` is equivalent to `m.chain(function (x) { return f(x).chain(g) })` (associative)
+
+### Monad
+
+must also implement Applicative and Chain spec.
+
+1. Apply's `ap`; derivable as `function (m) { return this.chain(function (f) { return m.map(f) }) }`
+2. Functor's map; derivable as `function (f) { var m = this; return m.chain(function(a) { return m.of(f(a)); }) }`
+3. `m.of(a).chain(f)` is equivalent to `f(a)` (left identity)
+4. `m.chain(m.of) is equivalent to `m` (right identity)
