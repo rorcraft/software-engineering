@@ -1,4 +1,10 @@
-http://howtonode.org/understanding-process-next-tick
+http://nodejs.org/api/process.html#process_process_nexttick_callback
+
+Use process.nextTick for when you want to call some code before any IO, but after the calling context has returned (usually because you want to register listeners on an event emitter and need to return the created emitter before you can register anything).
+
+__It is not going to the end of queue__ `setTimeout` would be going to end of queue.
+
+* http://howtonode.org/understanding-process-next-tick (outdated)
 
 Event loop a queue of callbacks that are processed by Node on every tick of the event loop.
 
