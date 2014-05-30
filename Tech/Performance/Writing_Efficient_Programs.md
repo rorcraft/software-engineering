@@ -1,3 +1,10 @@
+* http://blog.libtorrent.org/2012/12/principles-of-high-performance-programs/
+* http://blog.libtorrent.org/2012/10/asynchronous-disk-io/
+* http://www.slideshare.net/bittorrentinc/performance-software
+
+
+----------
+
 http://www.crowl.org/lawrence/programming/Bentley82.html
 
 A Summary of Jon Louis Bentley's
