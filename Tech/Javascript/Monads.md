@@ -4,6 +4,8 @@ https://github.com/fantasyland/fantasy-land
 
 https://github.com/fantasyland/fantasy-land/raw/master/figures/dependencies.png
 
+https://robotlolita.github.io/2013/12/08/a-monad-in-practicality-first-class-failures.html
+
 ### Semigroup
 
 must provide a `concat` method. 
