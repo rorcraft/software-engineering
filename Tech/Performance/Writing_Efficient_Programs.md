@@ -25,9 +25,7 @@ The most important properties of a large system are a __clean design and impleme
 1. If the overall system performance is not satisfactory, then the programmer should monitor the program to identify where the scarce resources are being consumed.
 This usually reveals that most of the time is used by a few percent of the code.
 Proper data structure selection and algorithm design are often the key to large reductions in the running time of the expensive parts of the program.
-
 1. If the performance of the critical parts is still unsatisfactory, then use the techniques below to recode them. __The original code should usually be left in the program as documentation.__
-
 1. If additional speed is still needed, then the programmer should work at lower design levels, including hand-written assembly code, operating system modifications, microcode, and special-purpose hardware design.
 
 ### Applying the Rules
