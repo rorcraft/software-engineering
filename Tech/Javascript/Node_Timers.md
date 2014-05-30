@@ -1,3 +1,18 @@
+http://nodejs.org/api/timers.html
+
+### `setTimeout`
+
+Returns a timeoutObject for possible use with clearTimeout().  
+It is important to note that your callback will probably not be called in exactly delay milliseconds
+
+### `setImmediate`
+
+To schedule the "immediate" execution of callback after I/O events callbacks and before setTimeout and setInterval . Returns an immediateObject for possible use with clearImmediate(). Optionally you can also pass arguments to the callback.
+
+Immediates are queued in the order created, and are popped off the queue once per loop iteration. This is different from process.nextTick which will execute process.maxTickDepth queued callbacks per iteration. setImmediate will yield to the event loop after firing a queued callback to make sure I/O is not being starved. 
+
+### `process.nextTick`
+
 http://nodejs.org/api/process.html#process_process_nexttick_callback
 
 Use process.nextTick for when you want to call some code before any IO, but after the calling context has returned (usually because you want to register listeners on an event emitter and need to return the created emitter before you can register anything).
