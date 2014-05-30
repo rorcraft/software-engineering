@@ -1,3 +1,5 @@
+http://howtonode.org/understanding-process-next-tick
+
 Event loop a queue of callbacks that are processed by Node on every tick of the event loop.
 
 ```javascript
