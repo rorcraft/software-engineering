@@ -5,6 +5,7 @@
 ### Javascript
 
 * https://addyosmani.github.io/basket.js/ - cache js or css on browser
+* http://alistapart.com/article/application-cache-is-a-douchebag - HTML5 application cache, html manifest
 * https://www.igvita.com/2014/05/20/script-injected-async-scripts-considered-harmful/
 
 <table style="margin-top:1em; text-align:left">
@@ -35,6 +36,7 @@
 </tbody></table>
 
 * https://developers.google.com/speed/docs/insights/mobile
+* http://www.stevesouders.com/blog/2010/12/15/controljs-part-1/
 
 ### Asset Pipeline
 
