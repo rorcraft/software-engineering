@@ -1,3 +1,8 @@
+* O(n lg(n))
+* 1 branch instead of recursion.
+* (not cache friendly) - need to use B-Tree.
+
+From go's core lib.
 ```go
 func Search(n int, f func(int) bool) int {
 	// Define f(-1) == false and f(n) == true.
