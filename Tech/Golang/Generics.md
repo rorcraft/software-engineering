@@ -1,3 +1,6 @@
+* http://blog.golang.org/laws-of-reflection
+* http://research.swtch.com/interfaces
+
 Using `reflect`
 
 http://play.golang.org/p/WGDOX4_csT
