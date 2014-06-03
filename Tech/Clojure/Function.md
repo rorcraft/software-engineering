@@ -1,6 +1,6 @@
 ### Anonymous Function
 
-`(fn [a b c] (+ a b c) 1 2 3)`
+`((fn [a b c] (+ a b c)) 1 2 3)`
 
 Shorthand
 
