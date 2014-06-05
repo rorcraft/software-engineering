@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"unicode/utf8"
 )
 
@@ -40,7 +41,21 @@ func reverse(str string) string {
 	return string(out)
 }
 
+// bonus: http://www.techinterview.org/post/526374214/reverse-a-string
+/*
+ * reverse words. e.g. "hello world" => "world hello"
+ */
+
+func reverseWord(str string) string {
+	reversed := strings.Split(reverse(str), " ")
+	for i, word := range reversed {
+		reversed[i] = reverse(word)
+	}
+	return strings.Join(reversed, " ")
+}
+
 func main() {
 	str := "hello world"
-	fmt.Println("reverse", str, "=", reverse(str))
+	fmt.Println("reverse", str, "=>", reverse(str))
+	fmt.Println("reverse_bonus", str, "=", reverseWord(str))
 }
