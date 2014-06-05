@@ -28,3 +28,11 @@ e.g.
 * Expedite
 * Standing Feature
 * Fixed Date
+
+### Ninety-Ninety rule
+
+https://en.wikipedia.org/wiki/Ninety-ninety_rule
+
+> "The first 90 percent of the code accounts for the first 90 percent of the development time. The remaining 10 percent of the code accounts for the other 90 percent of the development time."[1]
+
+—Tom Cargill, Bell Labs
