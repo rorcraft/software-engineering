@@ -9,6 +9,9 @@ http://permalink.gmane.org/gmane.comp.java.openjdk.core-libs.devel/2628
 * Sedgewick - 3 way optimized
 * Vladimir - 3 dual pivot
 
+* killer input - http://calmerthanyouare.org/2014/06/11/algorithmic-complexity-attacks-and-libc-qsort.html
+* implementation comparisons - http://calmerthanyouare.org/2013/05/31/qsort-shootout.html
+
 ### Classic
 
 ```
