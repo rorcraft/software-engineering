@@ -2,6 +2,11 @@ __skydb__
 
 http://skydb.io/ - behavioral data
 
+__influxdb__
+
+http://influxdb.org Scalable datastore for metrics, events, and real-time analytics 
+
+
 __lmdb__
 
 http://symas.com/mdb/ - fast read, slower write - k/v from OpenLDAP
@@ -32,6 +37,10 @@ tokudb + Mongo
 __RocksDB__
 
 http://rocksdb.org - more stable, SSD
+
+__SSDB__
+
+http://ssdb.io/zh_cn/ - mimics redis on leveldb
 
 __HyperLevelDB
 
