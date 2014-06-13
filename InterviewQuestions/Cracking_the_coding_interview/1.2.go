@@ -54,8 +54,21 @@ func reverseWord(str string) string {
 	return strings.Join(reversed, " ")
 }
 
+// Variation: reverse each word only.
+/*
+ * e.g. "hello world" => "olleh dlrow"
+ */
+func reverseWordOnly(str string) string {
+	reversed := strings.Split(str, " ")
+	for i, word := range reversed {
+		reversed[i] = reverse(word)
+	}
+	return strings.Join(reversed, " ")
+}
+
 func main() {
 	str := "hello world"
 	fmt.Println("reverse", str, "=>", reverse(str))
 	fmt.Println("reverse_bonus", str, "=", reverseWord(str))
+	fmt.Println("reverse_word_only", str, "=", reverseWordOnly(str))
 }
