@@ -45,3 +45,13 @@ All external management hires must be able to write code and show a high level o
 Candidates who cannot pass these tests or who don't have a verifiable record of public technical work should not be hired. 
 
 At companies other than Facebook, I have witnessed more than one large system failure that stemmed from a lack of core technical literacy in the executive staff. At Facebook, individual technical competence happens to be required of all engineering management staff and extends all the way up to the head of the department and includes the CEO (who continues to participate in Hackathons). This allows the company to repeatedly take daring technical risks in order to achieve significantly innovative product goals and execute at a consistently rapid pace: the more you understand the rules of the game, the better you can play it. 
+
+### Scaling teams
+http://www.theeffectiveengineer.com/blog/what-i-learned-from-googles-engineering-culture
+
+* Dedicate engineering resources toward shared tools and abstractions.
+* Invest in reusable training materials to onboard new engineers.
+* Standardize on coding conventions.
+* Increase code quality through code reviews.
+* Having the right data (and lots of it) solves many problems.
+* Automate testing to scale your code.
