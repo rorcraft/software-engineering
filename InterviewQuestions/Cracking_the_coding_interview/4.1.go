@@ -43,11 +43,20 @@ func isBalanced(tree *Node) bool {
 	}
 	ch := make(chan int)
 	doneCheck := make(chan bool, 1)
+	continueCheck := make(chan bool, 1)
+	finished := false
+	defer close(doneCheck)
+	defer close(continueCheck)
 
 	var getHeight func(t *Node, h int)
 	getHeight = func(t *Node, h int) {
+		if finished {
+			return
+		}
 		if t.Left == nil && t.Right == nil {
+			fmt.Println("found leaf", h)
 			ch<-h
+			finished = !<-continueCheck
 			return
 		}
 		if t.Left != nil {
@@ -59,13 +68,13 @@ func isBalanced(tree *Node) bool {
 		}
 	}
 
-	var checkHeight = func(heights chan int, done chan bool) {
+	var checkHeight = func(heights chan int) {
 		min, max := -1 , -1
 		balanced := true
 		for {
 			h, ok := <-heights
-			if (!ok) {
-				done<-balanced
+			if (!ok) { //exhausted
+				doneCheck<-balanced
 				break
 			}
 			// fmt.Println("got height", h)
@@ -76,15 +85,19 @@ func isBalanced(tree *Node) bool {
 			} else if h > max {
 				max = h
 			}
-			// should terminate getHeight early
 			if Abs(max-min) > 1 {
 				balanced = false
+				continueCheck<-false
+			} else {
+				continueCheck<-true
 			}
 		}
 	}
-	go checkHeight(ch, doneCheck)
-	getHeight(tree, 0)
-	close(ch)
+	go checkHeight(ch)
+	go func () {
+		getHeight(tree, 0)
+		close(ch)
+	}()
 	return <-doneCheck
 }
 
