@@ -4,6 +4,25 @@ Airbnb
 > Don't fuck up the culture
 https://medium.com/p/597cde9ee9d4
 
+__"Good Engineer Culture"__
+
+http://www.theeffectiveengineer.com/blog/what-makes-a-good-engineering-culture
+
+* Optimize for iteration speed.
+* Push relentlessly toward automation.
+* Build the right software abstractions.
+* Develop a focus on high code quality with code reviews. 
+* Maintain a respectful work environment.
+* Build shared ownership of code.
+* Invest in automated testing.
+* Allot 20% time.
+* Build a culture of learning and continuous improvement.
+* Hire the best.
+
+> Ooyala, in its very early startup days, used to optimize for cranking out as many features as possible, with an absence of code reviews; the result was that while the initial product may have gone to market more quickly, the resultant code became painful to modify, and __we spent over a year just rewriting brittle code to eliminate technical debt__.
+
+> One mistake that many engineering organizations make too early on is dividing the entire team into subteams with tech leads when the team’s still small. Subteams build walls of ownership that reduce incentive to cross those walls, since individuals will likely be assessed by their subteam’s objectives.
+
 Some things I believe: [Coda Hale](http://codahale.com/about.html)
 
 * While HTTP isn’t always the best answer, it’s a damn fine first guess.
