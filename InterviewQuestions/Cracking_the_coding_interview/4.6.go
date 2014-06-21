@@ -5,25 +5,26 @@
  */
 
 package main
+
 import "fmt"
 
 type Node struct {
 	Value string
-	Left *Node
+	Left  *Node
 	Right *Node
 }
 
 // without parent
 func LowestCommonAncestor(head, a, b *Node) *Node {
-	if (head == nil || head == a || head == b) {
+	if head == nil || head == a || head == b {
 		return head
 	}
 	left := LowestCommonAncestor(head.Left, a, b)
 	right := LowestCommonAncestor(head.Right, a, b)
 
-	if (left != nil && right != nil) {
+	if left != nil && right != nil {
 		return head
-	} else if (left != nil) {
+	} else if left != nil {
 		return left
 	} else {
 		return right
@@ -36,18 +37,18 @@ func LowestCommonAncestor(head, a, b *Node) *Node {
 
 func main() {
 	fmt.Println("4.6 Lowest Common Ancestor")
-/*
+	/*
 
-        0
-       /  \
-      /    \
-     /      \_____
-    1.L    1.R   2.R
-   /  \    /      / \
-  2    C  2.L   3.L  3.R
- /  \    /  \   /\   /\
-A    B  D    E F  G H  J
-*/
+	           0
+	          /  \
+	         /    \
+	        /      \_____
+	       1.L    1.R   2.R
+	      /  \    /      / \
+	     2    C  2.L   3.L  3.R
+	    /  \    /  \   /\   /\
+	   A    B  D    E F  G H  J
+	*/
 	head := &Node{Value: "0"}
 	head.Left = &Node{Value: "1 left"}
 	head.Right = &Node{Value: "1 right"}
@@ -62,11 +63,11 @@ A    B  D    E F  G H  J
 	F := head.Right.Right.Left.Left
 	head.Right.Right.Left.Right = &Node{Value: "G"} //G
 	head.Right.Right.Right = &Node{Value: "3 right"}
-	head.Right.Right.Right.Left = &Node{Value: "H"} //H
+	head.Right.Right.Right.Left = &Node{Value: "H"}  //H
 	head.Right.Right.Right.Right = &Node{Value: "J"} //J
 	head.Left.Left = &Node{Value: "2 left"}
-	head.Left.Right = &Node{Value: "C"} //C
-	head.Left.Left.Left = &Node{Value: "A"} //A
+	head.Left.Right = &Node{Value: "C"}      //C
+	head.Left.Left.Left = &Node{Value: "A"}  //A
 	head.Left.Left.Right = &Node{Value: "B"} //B
 	fmt.Println(D.Value, F.Value, "LCA:", LowestCommonAncestor(head, D, F).Value)
 	fmt.Println(D.Value, D.Value, "LCA:", LowestCommonAncestor(head, D, D).Value)
