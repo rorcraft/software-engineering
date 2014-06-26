@@ -3,8 +3,8 @@
  * same number of 1 bits in their binary representation.
  */
 
- // next largest = (least 1 digit > 0) >> 1
- // next smallest = (least 1 digit << 1) + carry
+// next largest = (least 1 digit > 0) >> 1
+// next smallest = (least 1 digit << 1) + carry
 
 package main
 
@@ -13,108 +13,69 @@ import (
 	"strconv"
 )
 
-func least1(num int64) uint {
-	i := uint(0)
-	for num > 0 {
-		if num & 1 == 1 {
-			return i
-		}
-		num >>= 1
-		i++
-	}
-	return i
-}
-func next0(num int64, i uint) uint {
-	j := i
-	num >>= j
-	for num > 0 {
-		if num & 1 == 0 {
-			return j
-		}
-		num >>= 1
-		j++
-	}
-	return j
-}
-
-func swap(num int64, i, j uint) int64 {
-	m := mask(num)
-	numi := ((num >> i) & 1) << j
-	// fmt.Printf("mask %b\n", m)
-	numj := int64((1 << i)) ^ m
-	// fmt.Printf("numi %b\n", numi)
-	// fmt.Printf("numj %b\n", numj)
-	num ^= numi
-	num &= numj
-	return num
-}
-
-func mask(num int64) int64 {
-	var mask int64
-	mask = 1 << 1
-	for n := num; n > 0; n >>= 1 {
-		mask <<= 1
-	}
-	mask -= 1
-	return mask
-}
 func nextSmallest(num int64) int64 {
-	i := least1(num)
-	return swap(num, i, next0(num, i))
-}
-
-func least10(num int64) uint {
-	i := uint(1)
-	num >>= 1
-	for num > 0 {
-		if (num & 1) == 1 {
-			return i
+	// flip first 0
+	// clear right, fill with same number of 1s
+	i := uint(0)
+	right := int64(0)
+	for bits, one := num, false; bits > 0; bits >>= 1 {
+		if (bits & 1) == 1 {
+			right = (right << 1) | 1
+			if !one {
+				one = true
+			}
+		} else if one && (bits&1) == 0 {
+			break
 		}
-		num >>= 1
 		i++
 	}
-	return i
+	left := (num>>i | 1) << i // set to 1, clear right
+	right >>= 1
+	return left | right
 }
 
-func next10(num int64, i uint) uint {
-	j := i
-	for j > 0 {
-		if ((num >> j) & 1 == 0) {
-			return j
-		}
-		j--
-	}
-	return j
-}
-
-func swapDown(num int64, i, j uint) int64 {
-	m := mask(num)
-	numi := int64(1 << j)
-	// fmt.Printf("mask %b\n", m)
-	numj := int64((1 << i)) ^ m
-	fmt.Printf("numi %b\n", numi)
-	fmt.Printf("numj %b\n", numj)
-	num |= numi
-	num &= numj
-	return num
-}
-
+// previous int with same # of 1s
 func nextLargest(num int64) int64 {
-	i := least10(num)
-	j := next10(num, i)
-	return swapDown(num, i, j)
+	// flip first 1
+	// flip LS 0 bit
+	i := uint(1)
+	ones := uint(0)
+	zero := false
+	for bits := num >> 1; bits > 0; bits >>= 1 {
+		if !zero && (bits&1) == 0 {
+			zero = true
+		}
+		if (bits & 1) == 1 {
+			ones++
+			if zero {
+				break
+			}
+		}
+		i++
+		// fmt.Printf("right %b\n", right)
+	}
+	if !zero {
+		return num
+	}
+	left := (num >> (i + 1)) << (i + 1)
+	right := (1<<(ones+1) - 1) << (i - ones - 1)
+	// fmt.Printf("left %b\n", left)
+	return left | int64(right)
 }
-
 
 func main() {
+	fmt.Println("5.3 find next and previous binary with same number of 1s")
 	num, _ := strconv.ParseInt("1111", 2, 64)
 	fmt.Printf("num: %b\n", num)
 	small := nextSmallest(num)
 	fmt.Printf("next smallest %b\n", small)
 	fmt.Printf("next largest %b\n", nextLargest(small))
-	num, _ = strconv.ParseInt("100010", 2, 64)
+	num, _ = strconv.ParseInt("100110", 2, 64)
 	fmt.Printf("num: %b\n", num)
 	small = nextSmallest(num)
 	fmt.Printf("next smallest %b\n", small)
 	fmt.Printf("next largest %b\n", nextLargest(small))
+	num, _ = strconv.ParseInt("1111", 2, 64)
+	fmt.Printf("num: %b\n", num)
+	fmt.Printf("next largest %b\n", nextLargest(num))
 }
