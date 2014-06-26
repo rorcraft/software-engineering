@@ -1,3 +1,5 @@
+* https://leveldb.googlecode.com/svn/trunk/doc/impl.html
+
 * http://blog.notdot.net/2009/12/Damn-Cool-Algorithms-Log-structured-storage
 * http://engineering.indeed.com/blog/2013/03/indeedeng-from-1-to-1-billion-video/
 * http://ayende.com/blog/161410/reviewing-leveldb-part-i-what-is-this-all-about
