@@ -32,3 +32,7 @@ func NewFile(fd int, name string) *File {
     return &f
 }
 ```
+
+> Type system
+
+https://functionwhatwhat.com/go%E2%80%99s-type-system-is-an-embarrassment/
