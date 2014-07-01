@@ -1,3 +1,10 @@
+Critical rendering path - https://www.udacity.com/course/ud884
+
+### Compression
+
+* http://www.html5rocks.com/en/tutorials/speed/img-compression/
+* http://www.html5rocks.com/en/tutorials/speed/txt-compression/
+
 ### CSS
 
 * https://github.com/giakki/uncss remove unused css.
