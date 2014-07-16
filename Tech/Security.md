@@ -7,7 +7,7 @@ https://gist.github.com/bartekn/6924685
 
 > HTTP Strict Transport Security (HSTS) is an opt-in security enhancement that is specified by a web application through the use of a special response header. Once a supported browser receives this header that browser will prevent any communications from being sent over HTTP to the specified domain and will instead send all communications over HTTPS. It also prevents HTTPS click through prompts on browsers.
 
-__MITM attacks__
+### MITM attacks
 
 > First I turned IP forwarding on so that my computer can act as a router and route traffic to other destinations: 
 attacker@linux:/#: echo 1 > /proc/sys/net/ipv4/ip_forward 
@@ -44,3 +44,13 @@ Attempts to avoid XSS to access cookie even if a user is exposed to the XSS.
 ### DDOS
 
 __SYN Flooding__ - http://tools.ietf.org/html/rfc4987 
+
+### CSRF 
+
+* http://haacked.com/archive/2009/04/02/anatomy-of-csrf-attack.aspx/
+
+__JSON response__
+http://haacked.com/archive/2009/06/25/json-hijacking.aspx/
+> The bad guy has tricked the victim’s browser to issue a request for the JSON containing sensitive information using the browser’s credentials (aka the auth cookie). This loads the JSON array as executable JavaScript and now the bad guy has access to this data.
+> Well the bad guy is changing the prototype for Object using the special __defineSetter__ method which allows overriding what happens when a property setter is being called.
+
