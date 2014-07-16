@@ -47,7 +47,9 @@ __SYN Flooding__ - http://tools.ietf.org/html/rfc4987
 
 ### CSRF 
 
-* http://haacked.com/archive/2009/04/02/anatomy-of-csrf-attack.aspx/
+http://haacked.com/archive/2009/04/02/anatomy-of-csrf-attack.aspx/
+> In general, the standard approach to mitigating CSRF attacks is to render a “canary” in the form (typically a hidden input) that the attacker couldn’t know or compute. When the form is submitted, the server validates that the submitted canary is correct. Now this assumes that the browser is trusted since the point of the attack is to get the general public to misuse their own browser’s authority.
+It turns out this is mostly a reasonable assumption since browsers do not allow using XmlHttp to make a cross-domain GET request. This makes it difficult for the attacker to obtain the canary using the current user’s credentials. 
 
 __JSON response__
 http://haacked.com/archive/2009/06/25/json-hijacking.aspx/
