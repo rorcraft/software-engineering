@@ -40,6 +40,9 @@ Incremental GC spreads the walking of objects and cleaning them across the execu
 __Rubinius__:
 http://rubini.us/2013/06/22/concurrent-garbage-collection/
 
+__Golang__:
+https://docs.google.com/document/d/16Y4IsnNRCN43Mx0NZc5YXZLovrHvvLhK_h0KN8woTO4/preview?sle=true
+
 __Course__:
 http://michaelrbernste.in/2013/05/20/adventures-in-GC-pedagogy.html
 http://faculty.cs.byu.edu/~jay/courses/2012/fall/330/course/gc.html
