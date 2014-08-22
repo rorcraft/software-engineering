@@ -16,6 +16,12 @@ Boolean(eval(eval(eval)) === eval)
 Boolean({a:'a'}.toString === '[object Object]')
 => true
 
-Boolean({a:'a',a:'b',a:'c'}['a'] == 'c')
+Boolean({a:'a',a:'b',a:'c'}['a'] === 'c')
+=> true
+
+Boolean(([][0]+'')['0'] === 'u')
+=> true
+
+Boolean((![][0]+'')['0'] === 't')
 => true
 ```
