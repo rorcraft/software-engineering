@@ -12,3 +12,5 @@ http://www.fastcompany.com/1836987/listen-steve-jobs-payoff-great-employee
 > **Every time you present the user with a non-essential decision to make, you have failed as a designer.** - Apple Design
 
 > **Don't trade simplicity for familiarity.**
+
+> **Two things are infinite: the universe and human stupidity; and I’m not sure about the the universe.** – Albert Einstein
