@@ -15,6 +15,8 @@ type Node struct {
 
 func FindNext(node *Node) *Node {
 	if node.Right == nil {
+		// need to recur up to find the next large
+		// if node is right of parent, parent is smaller.
 		return node.Parent
 	} else {
 		next := node.Right

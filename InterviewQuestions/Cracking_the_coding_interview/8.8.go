@@ -41,6 +41,9 @@ func placeQueens2(n int, cols []int, ways *[][]int) {
 			}
 		}
 		if ok {
+			// if cols[0] == 0 {
+			// 	fmt.Println("ok", n, cols)
+			// }
 			placeQueens2(n+1, cols, ways)
 		}
 	}
