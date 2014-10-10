@@ -26,4 +26,10 @@ Boolean(([][0]+'')['0'] === 'u')
 
 Boolean((![][0]+'')['0'] === 't')
 => true
+
+Foo = function() {} 
+var a = new Foo() 
+Foo.prototype.what = “fp rulez lol”
+a.what 
+//=> “fp rulez lol”
 ```
