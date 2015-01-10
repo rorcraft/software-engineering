@@ -98,3 +98,11 @@ set foldmethod=syntax
 set nofoldable
 ```
 
+__marks__ http://vim.wikia.com/wiki/Using_marks
+```
+ma - marks a marker at a
+'a or `a - jumps to mark a
+:marks - lists markers
+:delmarks a - delete marker a
+'. - jumps to last edit
+```
