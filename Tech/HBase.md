@@ -1,3 +1,7 @@
+### Book
+
+http://hbase.apache.org/book.html
+
 ### Region splitting
 http://hortonworks.com/blog/apache-hbase-region-splitting-and-merging/
 
