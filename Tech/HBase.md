@@ -6,13 +6,14 @@ http://hbase.apache.org/book.html
 HBase maintains maps of Keys to Values (key -> value). Each of these mappings is called a "KeyValue" or a "Cell". You can find a value by its key... That's it.
 
 The unit of storage in HBase consisting of the following fields:
- 1) row (rowkey)
- 2) column family
- 3) column qualifier
- 4) timestamp
- 5) type
- 6) MVCC version
- 7) value
+
+1. row (rowkey)
+2. column family
+3. column qualifier
+4. timestamp
+5. type
+6. MVCC version
+7. value
  
 Uniqueness is determined by the combination of row, column family, column qualifier, timestamp, and type.
 
