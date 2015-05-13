@@ -2,6 +2,11 @@
 
 http://hbase.apache.org/book.html
 
+### Log splitting
+http://blog.cloudera.com/blog/2012/07/hbase-log-splitting/
+
+The process of grouping the WAL edits by region is called log splitting.
+ 
 ### Region splitting
 http://hortonworks.com/blog/apache-hbase-region-splitting-and-merging/
 
