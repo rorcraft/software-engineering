@@ -2,6 +2,22 @@
 
 http://hbase.apache.org/book.html
 
+### Map / Keyvalue / Cell
+HBase maintains maps of Keys to Values (key -> value). Each of these mappings is called a "KeyValue" or a "Cell". You can find a value by its key... That's it.
+
+The unit of storage in HBase consisting of the following fields:
+ 1) row (rowkey)
+ 2) column family
+ 3) column qualifier
+ 4) timestamp
+ 5) type
+ 6) MVCC version
+ 7) value
+ 
+Uniqueness is determined by the combination of row, column family, column qualifier, timestamp, and type.
+
+The natural comparator will perform a bitwise comparison on row, column family, and column qualifier. Less intuitively, it will then treat the greater timestamp as the lesser value with the goal of sorting newer cells first.
+
 ### Log splitting
 http://blog.cloudera.com/blog/2012/07/hbase-log-splitting/
 
