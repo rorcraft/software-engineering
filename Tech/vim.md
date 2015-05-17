@@ -106,3 +106,16 @@ ma - marks a marker at a
 :delmarks a - delete marker a
 '. - jumps to last edit
 ```
+__scroll__
+```
+ctrl-e up
+ctrl-y down
+ctrl-d page-down
+ctrl-u page-up
+zl scroll right
+zL scroll half page right
+zh, zH scroll left
+```
+
+Quick zoom in pane
+https://coderwall.com/p/qqz1lq/vim-zoom-restore-window
