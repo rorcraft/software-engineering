@@ -1,3 +1,5 @@
+intro: http://jimbojw.com/wiki/index.php?title=Understanding_Hbase_and_BigTable
+
 ### Book
 
 http://hbase.apache.org/book.html
@@ -18,6 +20,9 @@ The unit of storage in HBase consisting of the following fields:
 Uniqueness is determined by the combination of row, column family, column qualifier, timestamp, and type.
 
 The natural comparator will perform a bitwise comparison on row, column family, and column qualifier. Less intuitively, it will then treat the greater timestamp as the lesser value with the goal of sorting newer cells first.
+
+Schema design:
+http://0b4af6cdc2f0c5998459-c0245c5c937c5dedcca3f1764ecc9b2f.r43.cf2.rackcdn.com/9353-login1210_khurana.pdf
 
 ### Log splitting
 http://blog.cloudera.com/blog/2012/07/hbase-log-splitting/
@@ -45,3 +50,6 @@ The data blocks contain the actual key/values as a MapFile.  For each “block c
 The HFile format also adds two extra “metadata” block types: Meta and FileInfo.  These two key/value blocks are written upon file close.
 
 The Meta block is designed to keep a large amount of data with its key as a String, while FileInfo is a simple Map preferred for small information with keys and values that are both byte-array. Regionserver’s StoreFile uses Meta-Blocks to store a Bloom Filter, and FileInfo for Max SequenceId, Major compaction key and Timerange info. This information is useful to avoid reading the file if there’s no chance that the key is present (Bloom Filter), if the file is too old (Max SequenceId) or if the file is too new (Timerange) to contain what we’re looking for.
+
+### HBase Master
+http://blog.zahoor.in/2012/08/hbase-hmaster-architecture/
