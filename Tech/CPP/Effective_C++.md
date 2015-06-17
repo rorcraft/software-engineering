@@ -26,6 +26,10 @@ cout << type_id_with_cvr<T>().pretty_name();
 // or folly::demangle
 ```
 ## auto
+### 5. Prefer auto to explicit type declarations.
+* must be initialized, immune to type mismatches that can lead to portability or efficiency problems, can ease the process of refactoring.
+* less typing than variables with explicitly specified types.
+* Can handle undeclarable types.
 
 ### 6. `auto` watch out for 'invisible' proxy types
 ```c++
