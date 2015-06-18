@@ -16,5 +16,6 @@ cmd xxx | tee file
 ### Sum
 ```
 cat numbers.log | python -c "import sys; print sum(int(l) for l in sys.stdin)"
+cat numbers.log | ruby -e 'puts STDIN.read.split("\n").map(&:to_i).reduce(:+)'
 cat numbers.log | paste -s -d+ infile | bc
 ```
