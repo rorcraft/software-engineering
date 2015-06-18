@@ -3,3 +3,13 @@ $ awk '{print $0}' file #  Print the all column.
 $ awk '{print $3}' file #  Print the 3rd column.
 $ awk '{print $1 $3}' file #  Print the 1st and the 3rd columns.
 ```
+
+`tee` to print stdout and log to file.
+```
+cmd xxx | tee file
+```
+
+```
+2>&1 # redirect stderr to stdout
+>/dev/null 2>&1 # and redirect to black hole
+```
