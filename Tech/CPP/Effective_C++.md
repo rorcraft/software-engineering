@@ -59,4 +59,7 @@ Widget w2;   // default ctor
 Widget w3({}); // std::initializer_list ctor with empty list
 
 ```
+### 8. Prefer `nullptr` to `0` and `NULL`
+```
+
 
