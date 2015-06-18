@@ -13,3 +13,8 @@ cmd xxx | tee file
 2>&1 # redirect stderr to stdout
 >/dev/null 2>&1 # and redirect to black hole
 ```
+### Sum
+```
+cat numbers.log | python -c "import sys; print sum(int(l) for l in sys.stdin)"
+cat numbers.log | paste -s -d+ infile | bc
+```
