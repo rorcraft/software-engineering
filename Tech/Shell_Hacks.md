@@ -1,0 +1,5 @@
+```
+$ awk '{print $0}' file #  Print the all column.
+$ awk '{print $3}' file #  Print the 3rd column.
+$ awk '{print $1 $3}' file #  Print the 1st and the 3rd columns.
+```
