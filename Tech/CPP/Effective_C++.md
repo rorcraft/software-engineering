@@ -60,6 +60,72 @@ Widget w3({}); // std::initializer_list ctor with empty list
 
 ```
 ### 8. Prefer `nullptr` to `0` and `NULL`
+* Avoid overloading on integral and pointer types.
 ```
+if (result == 0) {} // unclear
+if (result == nullptr) {} // better
 
+e.g.
+void f(int);
+void f(bool);
+void f(void*);
+f(0); // calls f(int), not f(void*)
+
+//nullptr is circular definition std::nullptr_t
+```
+### 9. `alias` instead of `typedef`
+* typedef don't support templatization
+```
+template<typename T>
+using MyAllocList = std::list<T, MyAlloc<T>>;
+
+// instead of
+template<typename T>
+struct MyAllocList {
+  typedef std::list<T, MyAlloc<T>> type;
+}
+```
+### 10. Scoped `enums` instead of unscoped `enums`
+```
+enum Color { black, white, red } // unscoped
+enum class Color { black, white, red } // scoped
+
+Color c = Color::white;
+
+enum class Status; // scoped enum always fwd decl
+enum Status: std::uint32_t; // unscoped enum need to fwd decl with type
+// unscoped enum benefit
+enum UserInfoFields { uiName, uiEmail, uiReputation };
+UserInfo uInfo; // std::tuple<string, string, size_t>;
+std::get<uiEmail>(uInfo); // instead of std::get<1>(uInfo);
+// if scoped to enum class UserInfoFields
+std::get<static_cast<std::size_t>(UserInfoFields::uiEmail)>(uInfo);
+```
+### 11. Prefer deleted functions to private undefined ones.
+* any function may be deleted including non-member functions and template instantiations.
+```
+bool isLucky(int number);
+bool isLucky(char) = delete; // reject chars
+bool isLucky(double) = delete; // reject doubles and floats
+
+// c++98
+class Widget {
+ private:
+  isLucky(char x); // not defined
+};
+```
+### 12. `override` virtual functions
+* member function reference qualifiers make it possible to treat lvalue and rvalue objects differently.
+```
+class Derived: public Base {
+ public:
+  virtual void f1() override; // virtual is optional
+  void override(); // legal
+  // reference qualifiers
+  Data& data() & { return values; } // lvalue instance return lvalue
+  Data&& data() & { return std::move(values); } // rvalue instance return rvalue
+}
+auto val1 = w1.data();
+auto val2 = makeWidget().data(); // rvalue
+```
 
