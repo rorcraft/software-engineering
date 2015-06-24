@@ -140,5 +140,10 @@ auto it = std::find(cbegin(container), cend(container), targetVal); // C++14 onl
 ### 14. declare `noexcept` if won't emit exceptions
 * `std:: vector:: push_back` takes advantage of this “move if you can, but copy if you must” strategy,
 * more optimizable
+* destructors are `noexcept` by default. 
 
+### 15. Use `constexpr` whenever possible.
+```
+constexpr functions can be used in contexts that demand compile-time constants. If the values of the arguments you pass to a constexpr function in such a context are known during compilation, the result will be computed during compilation. If any of the arguments’ values is not known during compilation, your code will be rejected.
+```
 
