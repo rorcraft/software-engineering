@@ -143,7 +143,16 @@ auto it = std::find(cbegin(container), cend(container), targetVal); // C++14 onl
 * destructors are `noexcept` by default. 
 
 ### 15. Use `constexpr` whenever possible.
+* constexpr functions can be used in contexts that demand compile-time constants. If the values of the arguments you pass to a constexpr function in such a context are known during compilation, the result will be computed during compilation. If any of the arguments’ values is not known during compilation, your code will be rejected.
+* When a constexpr function is called with one or more values that are not known during compilation, it acts like a normal function, computing its result at runtime. This means you don’t need two functions to perform the same operation, one for compile-time constants and one for all other values. The constexpr function does it all.
 ```
-constexpr functions can be used in contexts that demand compile-time constants. If the values of the arguments you pass to a constexpr function in such a context are known during compilation, the result will be computed during compilation. If any of the arguments’ values is not known during compilation, your code will be rejected.
+constexpr int pow(int base, int exp) noexcept {
+  // C++11 no more than a return statement, but you can use ternary cond and recursion.
+  return (exp == 0 ? 1 : base * pow(base, exp - 1));
+  // C++14 much looser.
+}
+std::array<int, pow(3, numConds)> results; // compile time as 3^numConds elements
+auto baseToExp = pow(base, exp); // runtime
 ```
+* User defined type can be constexpr as well. ctor and getters.
 
