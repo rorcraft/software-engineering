@@ -128,4 +128,17 @@ class Derived: public Base {
 auto val1 = w1.data();
 auto val2 = makeWidget().data(); // rvalue
 ```
+### 13. Prefer `const_iterators` to `iterators`
+```
+auto it = std::find(values.cbegin(), values.cend(), 1983);
+values.insert(it, 1998);
+
+auto it = std::find(cbegin(container), cend(container), targetVal); // C++14 only
+
+// template code, prefer non-member version of begin, end, etc over member function
+```
+### 14. declare `noexcept` if won't emit exceptions
+* `std:: vector:: push_back` takes advantage of this “move if you can, but copy if you must” strategy,
+* more optimizable
+
 
