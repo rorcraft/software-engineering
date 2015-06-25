@@ -156,3 +156,10 @@ auto baseToExp = pow(base, exp); // runtime
 ```
 * User defined type can be constexpr as well. ctor and getters.
 
+### 16. Make `const` member functions thread safe.
+* For a single variable or memory location requiring synchronization, use of a `std::atomic` is adequate, but once you get to two or more variables or memory locations that require manipulation as a unit, you should reach for a `mutex`.
+
+### 17. Understand special member function generation.
+* C++98: ctor, dtor, copy ctor, copy assignment operator. Generated only if needed.
+* Generated special member functions are implicitly public and inline and nonvirtual.
+
