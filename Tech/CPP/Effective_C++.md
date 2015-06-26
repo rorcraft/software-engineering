@@ -206,4 +206,12 @@ class Base {
 * move-only type.
 * on destruction, a non-null unique_ptr destroys its resource, by default calls `delete` to the raw pointer inside.
 * use case: factory function return type.
-* 
+* watch out: Function object deleters with extensive state can yield std:: unique_ptr objects of significant size.
+* easily and efficiently converts to a `std::shared_ptr sp = myFactoryFunc();`
+* factory function should return `unique_ptr` and let client decide to convert to `shared_ptr`.
+
+### 19. `std::shared_ptr` for shared-ownership.
+* all shared_ptrs collaborate to ensure its destruction at the point where it's no longer needed. (like gc)
+* reference counted. ctor increments the count, dtor decrements, copy assignment operators do both.
+* if count = 0 after decrement, it'll destroy it.
+* __twice__ the size of raw pointers.
