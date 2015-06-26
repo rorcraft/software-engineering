@@ -162,4 +162,48 @@ auto baseToExp = pow(base, exp); // runtime
 ### 17. Understand special member function generation.
 * C++98: ctor, dtor, copy ctor, copy assignment operator. Generated only if needed.
 * Generated special member functions are implicitly public and inline and nonvirtual.
+* C++11: 2 more - move ctor and move assignment
+* The two copy operations are independent: declaring one doesn't prevent compilers from generating the other.
+* The two move operations are not independent. If you declare either, that prevents compilers from generating the other.
+* move operations won't be generated for any class that explicitly declares a copy operation.
+* declaring a move operation (ctor or assignment) in a class causes compilers to disable the copy operations. (using `delete`)
+* Rule of three: copy ctor, copy assignment, dtor - should declare all three.
+`move` operations are genearated for classes (when needed) only if these are true:
+* No copy operations are declared in the class.
+* No move operations are declared in the class.
+* No destructor is declared in teh class.
+C++11 deprecates the auto generation of copy operations for classes declasing copy operations or a destructor.
+```
+class Widget {
+ public:
+   ~Widget(); // watch out for declaring this later, move operations will not be auto generated.
+   Widget(const Widget&) = default; 
+   Widget& operator=(const Widget&) = default;
+};
+// Polymorphic base class
+class Base {
+ public:
+  virtual ~Base() = default; // if not virtual delete or typeid on derived class may yield undefined behavior.
+  Base(Base&&) = default;
+  Base& operator=(Base&&) = default;
+  Base(const Base&) = default;
+  Base& operator=(const Base&) = default;
+};
+```
+* Default constructor: generated only if no user-declared constructors.
+* Destructor: `noexcept` by default, virtual only if a base class dtor is virtual.
+* Copy Ctor: generated only if class lacks user-declared copy ctor. deleted if class declares move operation. will not auto generate if user declared copy assignment operator or dtor.
+* Copy assignment operator: Generated if class lacks user-declared copy assignment operator. Deleted if class declares copy assignment operator. Will not generate if user declare ctor or dtor.
+* Move ctor, move assignment operator: Each performs memberwise moving of non-static data members. Generated only if the class contains no user-declared copy operations, move operations, or destructor. 
 
+* Applying `final` to virtual function prevents it from being overridden in derived class. Also application to class, prohibiting inheritance.
+* `std::vector::push_back` call `std::move_if_noexcept`, a variation of `std::move` that conditionally casts to an rvalue.
+
+## Smart Pointers
+### 18. `std::unique_ptr` for exclusive-ownership
+* by default, same as as raw pointers.
+* copying isn't allowed.
+* move-only type.
+* on destruction, a non-null unique_ptr destroys its resource, by default calls `delete` to the raw pointer inside.
+* use case: factory function return type.
+* 
