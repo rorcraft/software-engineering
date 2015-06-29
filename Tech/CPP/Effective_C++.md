@@ -238,3 +238,18 @@ void Widget::process() {
 ```
 * There must be an existing `shared_ptr` that points to current boject, otherwise its undefined. Often declare ctors private and have clients create objects by factory functions.
 * Don't use share_ptr<T> arrays. 
+
+### 20. use `std::weak_ptr` for `std::shared_ptr` like pointers that can dangle.
+* dangle (`expired()`) - when object it is supposed to point to no longer exists.
+* same size as shared_ptr
+* uses the secondary reference count in the control block.
+* e.g. A1 -> B <- A2 (use shared_ptr), B -> A1 (use weak_ptr), prevent shared_ptr cycle which will not destroy the objects.
+
+### 21. Prefer `make_shared` and `make_unique` instead of `new`.
+* make_unique is not in C++11, but folly has one, and it is in C++14.
+```
+template <typename T, typename... Ts>
+std::unique_ptr<T> make_unique(Ts&&... params) {
+  return std::unique_ptr<T>(new T(std::forward<Ts>(params)...);
+}
+```
