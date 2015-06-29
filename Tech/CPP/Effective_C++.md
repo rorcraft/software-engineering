@@ -215,3 +215,26 @@ class Base {
 * reference counted. ctor increments the count, dtor decrements, copy assignment operators do both.
 * if count = 0 after decrement, it'll destroy it.
 * __twice__ the size of raw pointers.
+* memory for reference count must be dynamically allocated
+* increment, decrement of the reference must be atomic.
+* move constructing shared_ptr, no reference manipulation is required.
+* the type of deleter is part of the type of unique_ptr, whereas it is not part of shared_ptr
+* specifying a custom deleter doesn't change the size of a std::shared_ptr object.
+* reference count is part of data structure - control block. (a copy of custom deleter, a copy of custom allocator, secondary reference count - weak count)
+* `std::make_shared` always create a control block.
+* A control block is created when a `std::shared_ptr` is constructed from unique-ownership pointer (std::unique_str, std::auto_ptr). 
+* Watch out: ctor called with raw pointer, it creates a control block.
+* `std::enable_shared_from_this<T>` create shared_ptr from `*this`. _The Curiously Recurring Template Pattern (CRTP)_. Defines a member function that creates a `std::shared_ptr` to the current object, `shared_from_this`.
+```
+class Widget: public std::enable_shared_from_this<Widget> {
+ public:
+  void process();
+  template<typename... Ts>
+  static std::shared_ptr<Widget> create(Ts&&... params);
+};
+void Widget::process() {
+  processedWidgets.emplace_back(shared_from_this()); // not (*this)
+}
+```
+* There must be an existing `shared_ptr` that points to current boject, otherwise its undefined. Often declare ctors private and have clients create objects by factory functions.
+* Don't use share_ptr<T> arrays. 
