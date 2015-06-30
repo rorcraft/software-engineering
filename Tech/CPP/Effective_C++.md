@@ -253,3 +253,51 @@ std::unique_ptr<T> make_unique(Ts&&... params) {
   return std::unique_ptr<T>(new T(std::forward<Ts>(params)...);
 }
 ```
+* Watch out for out of order execution, exception at computePriority may leak the new Widget
+```
+void processWidget(std::shared_ptr<Widget>(new Widget), computePriority());
+void processWidget(std::make_shared<Widget>(), computePriority());
+```
+* Limitation, none of the `make` functions permit custom deleters but both constructors do.
+* Within the `make` functions, the perfect forward use parenthese `()`, not braces `{}`.
+```
+auto initList = { 10, 20 }; // work around
+auto spv = std::make_shared<std::vector<int>>(initList); 
+```
+* `make_shared` is more performant vs `new` because control block is being placed in the same chunk of memory as the managed object. 
+* If the object type is quite large and the time between destruction of last shared_ptr and the last weak_ptr is significant, a lag can occur between when an object is destroyed and when the memory it occupied is freed.
+```
+// try to write exception safe but efficient initialization
+std::shared_ptr<Widget> spw(new Widget, cusDel); // lvalue
+processWidget(std::move(spw), computePriority()); // move otherwise a copy will be slow.
+```
+### 22. When using Pimpl Idiom, define special member functions in the implementation file.
+* "pointer to implementation" idiom. Replace data members of a class with a pointer to an implementation class.
+* Speeds up compilation by reducing dependencies between class clients and implementations.
+* _incomplete type_:
+  1. declaration of a data member that's a pointer to an incomplete type.
+  2. dynamic allocation and deallocation of the object that holds the data members that used to be in original class.
+```
+Widget::Widget() 
+: pImpl(std::make_unique<Impl>()) {}
+
+Widget::~Widget() = default; // dtor definition, in order to be a complete type.
+```
+* default deleter employ C++11’ s static_assert to ensure that the raw pointer doesn’t point to an incomplete type.
+
+## Rvalue References, Move Semantics and Perfect Forwarding.
+```
+// !important to remember
+void f(Widget&& w); // w is lvalue even thought its type is rvalue reference
+```
+
+### 23. `std::move` and `std::forward`
+* perform casts, `std::move` unconditionally casts its argument to an rvalue. `std::forward` performs this cast only if a particular condition is fulfilled.
+```
+template<typename T>
+decltype(auto) move(T&& param) {
+  using ReturnType = remove_reference_t<T>&&;
+  return static_cast<ReturnType>(param);
+}
+```
+
