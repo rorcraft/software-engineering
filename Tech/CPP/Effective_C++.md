@@ -300,4 +300,13 @@ decltype(auto) move(T&& param) {
   return static_cast<ReturnType>(param);
 }
 ```
+* move request on `const` objects are silently transformed into copy operations.
+* forward, cast lvalue param to rvalue to be passed down to other functions expecting rvalue, only if param is bound to an rvalue.
 
+### 24. Distinguish univeral references from rvalue references.
+* `T&&` 1. rvalue reference. 2. universal references. If you see `T&&` without type deduction, you're seeing rvalue reference.
+```
+void f(Widget&& param); // rvalue
+Widget&& var1 = Widget(); // rvalue
+```
+* to be universal, type deduction is neccesary. 
