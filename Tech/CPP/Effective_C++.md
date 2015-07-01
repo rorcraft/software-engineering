@@ -308,5 +308,39 @@ decltype(auto) move(T&& param) {
 ```
 void f(Widget&& param); // rvalue
 Widget&& var1 = Widget(); // rvalue
+template <typename T>
+void f(T&& param); // universal
+void f(const T&& param); // rvalue const
 ```
 * to be universal, type deduction is neccesary. 
+
+### 25. Use `std::move` on rvalue ref, `std::forward` on universal ref.
+```
+// instead of overloading (doesn't scale if multiple params, unperformant)
+void setName(const std::string& newName) { name = newName; }
+void setName(std::string&& newName) { name = std::move(newName); } 
+// use universal ref and forward
+void setName(T&& newName) { name = std::forward(newName); }
+```
+```
+// return by value
+Matrix operator+(Matrix&& lhs, Matrix& rhs) {
+  lhs += rhs;
+  return std::move(lhs); // move into return value location.
+  return lhs; // copy 
+}
+```
+```
+// watch out, don't return rvalue of local var
+Widget makeWidget() {
+  Widget w;
+  return std::move(w); // compiler already has "Return Value Optimization"
+}
+```
+Condition for RVO.
+* the type of local object is the same as that returned by the function
+* the local object is what's being returned.
+
+### 26. Avoid overloading on universal references.
+* universal references overload is greedy, don't mix with other types.
+* Perfect-forwarding constructors are especially problematic, because they’re typically better matches than copy constructors for non-const lvalues, and they can hijack derived class calls to base class copy and move constructors.
