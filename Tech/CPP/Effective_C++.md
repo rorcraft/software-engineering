@@ -380,9 +380,17 @@ SpecialPerson(cost SpecialPerson& rhs) : Person(rhs) {...}
    template <typename T,
              typename = typename std::enable_if<
                           !std::is_base_of<Person, typename std::decay<T>::type>::value
+                          &&
+                          !std::is_integral<std::move_reference<T>>::value
                         >::type
             >
-   explicit Person(T&& n);
+   explicit Person(T&& n) : name(std::foward<T>(n)) {}
+   explicit Person(int idx) : name(nameFromIdx(idx)) {}
+   // error messages can be crypic, use is_constructible
+   static_assert(std::is_constructible<std::string, T>::value,
+     "Parameter n cannot be used to construct std::string"
+   );
 ```
 * SFINAE - ?
-* 
+
+### 28. reference collapsing.
