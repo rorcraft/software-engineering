@@ -364,4 +364,25 @@ void logAndAddImpl(int idx, std::true_type) {
   logAndAdd(nameFromIdx(idx));
 }
 ```
-* __Constraining templates that takes universal references__:
+* __Constraining templates that takes universal references__: `std::enable_if` - force compilers to behave as if particular template didn't exist. e.g. enable Person perfect-forwarding constructor only if the type being passed isn't Person. 
+```
+class Person {
+ public:
+   template<typename T, typename = typename std::enable_if<condition>::type>
+   explicit Person(T&& n);
+// strip any references, consts, volatiles from T before checking type
+// std::decay<T>::type
+// condition:
+// !std::is_same<Person, typename std::decay<T>::type>::value
+// watch out is_same will run into problems when derived class pass in derived objects into base constructors.
+SpecialPerson(cost SpecialPerson& rhs) : Person(rhs) {...}
+// use is_base_of.
+   template <typename T,
+             typename = typename std::enable_if<
+                          !std::is_base_of<Person, typename std::decay<T>::type>::value
+                        >::type
+            >
+   explicit Person(T&& n);
+```
+* SFINAE - ?
+* 
