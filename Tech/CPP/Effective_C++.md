@@ -344,3 +344,24 @@ Condition for RVO.
 ### 26. Avoid overloading on universal references.
 * universal references overload is greedy, don't mix with other types.
 * Perfect-forwarding constructors are especially problematic, because they’re typically better matches than copy constructors for non-const lvalues, and they can hijack derived class calls to base class copy and move constructors.
+* in situations where a template instantiation and a non-template function (i.e., a “normal” function) are equally good matches for a function call, the normal function is preferred.
+
+### 27. Alternatives to overloading on universal references.
+* __Abandon overloading__: use different function names.
+* __Pass by const T&__: more code
+* __Pass by value__: cleaner, could be performant if you'll need to copy them anyway.
+* __Tag dispatch__: Add hints for overload resolution.
+```
+template<typename T>
+void logAndAdd(T&& name) {
+  // T would be deduced to int& if name is lvalue int.
+  logAndAddImpl(std::forward<T>(name), std::is_integral(typename std::remove_reference<T>::type>());
+}
+void logAndAddImpl(T&& name, std::false_type) {
+  names.emplace(std::forward<T>name)
+}
+void logAndAddImpl(int idx, std::true_type) {
+  logAndAdd(nameFromIdx(idx));
+}
+```
+* __Constraining templates that takes universal references__:
