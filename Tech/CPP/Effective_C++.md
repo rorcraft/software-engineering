@@ -394,3 +394,11 @@ SpecialPerson(cost SpecialPerson& rhs) : Person(rhs) {...}
 * SFINAE - ?
 
 ### 28. reference collapsing.
+* template instantiation, `auto` type generation, `typedef` and alias declarations and `deltype`.
+* when compilers generate reference to a reference in a reference collapsing context, result becomes a single reference. 
+
+### 29. assume move operations are not present, not cheap and not used.
+
+### 30. Familiarize yourself with perfect forwarding failure cases.
+* Perfect forwarding means we don’t just forward objects, we also forward their salient characteristics: their types, whether they’re lvalues or rvalues, and whether they’re const or volatile.
+
