@@ -420,4 +420,23 @@ using ProcessFuncType = int (*)(int);
 ProcessFuncType processValPtr = processVal; // processVal is a function
 fwd(processValPtr);
 ```
-* bit-field, a non-const reference shall not bound to a bit-field.
+* bit-field, a non-const reference shall not bound to a bit-field. Simply pass a copy.
+
+## Lambda Expressions.
+* lambda expression
+* closure object - instantiated lambda expression.
+* closure class - class from which the closure is instantiated. lambda generates a unique closure class.
+
+### 31. Avoid default capture modes.
+* default by-reference capture and lead to dangling references.
+* default by-value may also not be self-contained.
+* If the lifetime of the closure created by lambda exceeds the lifetime of local variable, the reference will dangle.
+```
+auto divisor = computeDivisor(calc1, calc2); 
+filters.emplace_back( 
+  [&](int value) { return value % divisor == 0; } // divisor could dangle
+);
+[=](int value) { return value % divisor == 0; } // copies divisor
+```
+
+
