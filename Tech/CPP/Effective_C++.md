@@ -401,4 +401,23 @@ SpecialPerson(cost SpecialPerson& rhs) : Person(rhs) {...}
 
 ### 30. Familiarize yourself with perfect forwarding failure cases.
 * Perfect forwarding means we don’t just forward objects, we also forward their salient characteristics: their types, whether they’re lvalues or rvalues, and whether they’re const or volatile.
-
+```
+f({1,2,3});
+fwd({1,2,3}); // doesn't compile, forbidden to deduce std::initializer_list. "non-deduced context"
+auto il = {1,2,3};
+fwd(il); // works
+```
+* Compiler unable to deduce type.
+* Compiler deduced the wrong type.
+* `0` and `NULL` type deduction can be awry.
+* There's no need to define integral `static const` and `constexpr` data members in classes. Compilers perform const propagation. Passing integral static const and constexpr data members by reference "generally" requires that they be defined.
+```
+constexpr std::size_t Widget::MinVals; // defined in .cpp file
+```
+* Overloaded function names and template names. Compile figures out which function to overload by comparing declaration.
+```
+using ProcessFuncType = int (*)(int);
+ProcessFuncType processValPtr = processVal; // processVal is a function
+fwd(processValPtr);
+```
+* bit-field, a non-const reference shall not bound to a bit-field.
