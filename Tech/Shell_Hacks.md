@@ -21,6 +21,10 @@ cat numbers.log | paste -s -d+ infile | bc
 ```
 ### Regex match
 ```
+cat $1 | awk '{ gsub("\t", "  ") ; print $0 }'
+```
+
+```
 import re
 import sys
 import argparse
