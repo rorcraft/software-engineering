@@ -436,7 +436,30 @@ auto divisor = computeDivisor(calc1, calc2);
 filters.emplace_back( 
   [&](int value) { return value % divisor == 0; } // divisor could dangle
 );
-[=](int value) { return value % divisor == 0; } // copies divisor
+static auto divisor;
+[=](int value) { return value % divisor == 0; } // does not copy stsatic var divisor
+```
+* Every non-static member functino has an implicit `this` pointer
+* Default capture `[=]` captures the `this` pointer and not `divisor`.
+
+### 32. Use init capture for capturing move only objects into closure.
+* C++14 has init capture (generalized lambda capture). It takes an expression.
+```
+[divisor = divisor](int value) { return value % divisor == 0; };
+
+auto pw = std::make_unique<Widget>();
+[pw = std::move(pw)](int value) { return pw->isValidated(); };
+// or directly
+[pw = std::make_unique<Widget>()](int value) { return pw->isValidated(); };
+```
+* C++11 can use class with operator() or `std::bind`
+```
+auto func =
+  std::bind(
+    [](const std:vector<double>& data) {},
+    std::move(data)
+  )
+)
 ```
 
 
