@@ -19,3 +19,18 @@ cat numbers.log | python -c "import sys; print sum(int(l) for l in sys.stdin)"
 cat numbers.log | ruby -e 'puts STDIN.read.split("\n").map(&:to_i).reduce(:+)'
 cat numbers.log | paste -s -d+ infile | bc
 ```
+### Regex match
+```
+import re
+import sys
+import argparse
+
+parser = argparse.ArgumentParser(description='print matched by regex')
+parser.add_argument('regex', type=str, help='regex pattern')
+args = parser.parse_args()
+
+for line in sys.stdin:
+    matched = re.match(args.regex, line)
+    if matched:
+        print matched.group(1)
+```
