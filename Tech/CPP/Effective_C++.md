@@ -484,3 +484,7 @@ auto compressRateB = std:: bind( compress, std:: ref( w), _1);
 * compressRateB acts as if it holds a reference to w, rather than a copy.
 
 ## Currency API
+
+### 35. Prefer task based programming to thread-based.
+* `std::thread t(doAsyncWork);` － thread based.
+* `auto fut = std::async(doAsyncWork);` - task based.
