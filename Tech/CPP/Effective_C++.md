@@ -461,5 +461,14 @@ auto func =
   )
 )
 ```
+### 33. Use `decltype` on `auto&&` parameters to `std::forward` them
+```
+auto func = [](auto&& x) { return normalize(std::forward<decltype(x)>(x)); };
+```
+
+### 34. Prefer lambda to `std::bind`
+* lambdas are more readable
+* 
+
 
 
