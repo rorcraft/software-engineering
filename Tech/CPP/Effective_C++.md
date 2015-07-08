@@ -488,3 +488,10 @@ auto compressRateB = std:: bind( compress, std:: ref( w), _1);
 ### 35. Prefer task based programming to thread-based.
 * `std::thread t(doAsyncWork);` － thread based.
 * `auto fut = std::async(doAsyncWork);` - task based.
+* std::thread cannot return values from called function, if it throws, the program terminates.
+* thread based programming calls for manual management of thread exhaustion, oversubscription, load balancing and adaptation to new platforms.
+
+### 36. Specify `std::launch::async` launch policy if asynchroncity is essential
+* `std::launch::async` - f must be run asynchronously, ie on a different thread.
+* `std::launch::deferred` - f is only run when `get` or `wait` is called on the future.
+* default policy without specification can be either or, ie unpredictable to be async or sync, therefore cannot expect to use `thread_local` variables.
