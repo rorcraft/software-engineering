@@ -468,7 +468,19 @@ auto func = [](auto&& x) { return normalize(std::forward<decltype(x)>(x)); };
 
 ### 34. Prefer lambda to `std::bind`
 * lambdas are more readable
-* 
+```
+auto setSoundB = std::bind(
+  setAlarm, // need to cast to function pointer type if setAlarm is overloaded
+  std::bind(std::plus<>(), // to delay evaluation
+            std::bind(steady_clock::now),
+            1h),
+  _1,
+  30);
+```
+* `std::bind` always copies its arguments, but callers can achieve the effect of having an argument stored by reference by applying `std::ref` to it. 
+```
+auto compressRateB = std:: bind( compress, std:: ref( w), _1);
+```
+* compressRateB acts as if it holds a reference to w, rather than a copy.
 
-
-
+## Currency API
