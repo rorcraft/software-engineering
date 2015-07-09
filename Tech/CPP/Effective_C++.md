@@ -494,4 +494,17 @@ auto compressRateB = std:: bind( compress, std:: ref( w), _1);
 ### 36. Specify `std::launch::async` launch policy if asynchroncity is essential
 * `std::launch::async` - f must be run asynchronously, ie on a different thread.
 * `std::launch::deferred` - f is only run when `get` or `wait` is called on the future.
-* default policy without specification can be either or, ie unpredictable to be async or sync, therefore cannot expect to use `thread_local` variables.
+* default policy without specification can be either or, ie unpredictable to be async or sync, therefore cannot expect to use `thread_local` variables. WATCH OUT for using wait_for on the future from default std::async.
+Okay to use `std::async` when:
+* task need not run concurrently with the thread calling `get` or `wait`
+* doesn't matter which thread's thread_local variables.
+* acceptable task may never execute
+* wait_for, wait_until checks for deferred status.
+
+### 37. Make `std::thread` unjoinable on all paths.
+* state is either joinable (thread is blocked or waiting) or unjoinable (default constructed, moved, joined or detached).
+* use RAII (Resource Acquisition Is Initialization) object to explicitly join or detach on destruct.
+WATCH OUT:
+* `join`-on-destruction can lead to difficult to debug performance anomalies.
+* `detach`-on-destruction can lead to undefined behaviour.
+* declare `std::thread` last in list of data members.
