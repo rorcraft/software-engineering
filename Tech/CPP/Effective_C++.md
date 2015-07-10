@@ -508,3 +508,54 @@ WATCH OUT:
 * `join`-on-destruction can lead to difficult to debug performance anomalies.
 * `detach`-on-destruction can lead to undefined behaviour.
 * declare `std::thread` last in list of data members.
+
+### 38. Beware of varying thread handle destructor behavior.
+* destructor for a future sometimes behaves as if it did an implicit `join` or `detach` or neither. It never causes program to terminate. 
+* result of std::promise is stored in shared state, heap based object.
+* The destructor of the last future referring to a shared state for a non-deferred task launched via std::async __blocks__ until the task completes.
+* The destructor for all other futures destroys the future object. (detached, and never run)
+* use `std::packaged_task` to store future result into shared state.
+
+### 39. Consider `void` futures for one-shot event communication.
+```
+std::condition_variable cv;
+std::mutex m;
+cv.notify_one(); // or notify_all
+/*******************/
+std::unique_lock<std::mutex> lk(m);
+cv.wait(lk);
+```
+* If the detecting task notifies before reacting task waits, the reacting task will hang.
+* The wait statement fails to account for spurious wakeups.
+```
+std::atmoic<bool> flag(false);
+// ...
+while(!flag); // polling still runs, not true blocking.
+```
+```
+bool flag(false);
+{ 
+  std::lock_guard<std::mutext> g(m);
+  flag = true;
+}
+cv.notify_one();
+// ...
+{
+  std::unique_lock<std::mutext> lk(m);
+  cv.wait(lk, [] { return flag; })
+}
+```
+```
+std::promise<void> p;
+p.set_value(); // notifier
+p.get_future().wait(); // reactor
+```
+* requires no mutex, works regardless of whether the detecting task sets it std::promise before the reacting task waits, and is immune to spurious wakeups. 
+
+### 40. Use `std::atomic` for concurrency, `volatile` (don't optimize) for special memory.
+
+## Tweaks
+
+### 41. Consider pass by value for copyable parameters that are cheap to move and always copied.
+
+### 42: Consider emplacement instead of insertion.
