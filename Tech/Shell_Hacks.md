@@ -38,3 +38,10 @@ for line in sys.stdin:
     if matched:
         print matched.group(1)
 ```
+### Bash
+```
+my_array=(one two three four)
+for i in ${my_array[@]}; do
+  echo $i
+done
+```
