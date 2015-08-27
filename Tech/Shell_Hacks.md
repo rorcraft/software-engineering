@@ -45,3 +45,8 @@ for i in ${my_array[@]}; do
   echo $i
 done
 ```
+Find
+```
+find . -name "abc.jpg"
+find . -regextype sed -regex ".*/[a-f0-9\-]\{36\}\.jpg"
+```
