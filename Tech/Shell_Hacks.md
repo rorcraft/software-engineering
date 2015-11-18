@@ -13,6 +13,13 @@ cmd xxx | tee file
 2>&1 # redirect stderr to stdout
 >/dev/null 2>&1 # and redirect to black hole
 ```
+
+### Git
+
+```
+git show --name-only SHA1 | xargs grep 'user='
+```
+
 ### Sum
 ```
 cat numbers.log | python -c "import sys; print sum(int(l) for l in sys.stdin)"
