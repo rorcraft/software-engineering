@@ -8,3 +8,7 @@ for a in array_a:
   for b in array_b:
     print(a+b)
 ```
+
+```
+[ t for t in tables if ":" in t ]
+```
