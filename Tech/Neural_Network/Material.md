@@ -17,3 +17,6 @@ http://iamtrask.github.io/2015/11/15/anyone-can-code-lstm/
 
 TensorFlow:
 * https://github.com/nlintz/TensorFlow-Tutorials
+
+Use Google's Word2Vec for movie reviews:
+* https://www.kaggle.com/c/word2vec-nlp-tutorial
