@@ -57,6 +57,10 @@ Find
 find . -name "abc.jpg"
 find . -regextype sed -regex ".*/[a-f0-9\-]\{36\}\.jpg"
 ```
+GNU Parallel
+```
+parallel echo {} ::: $(seq 0 10)
+```
 
 ### Network
 
